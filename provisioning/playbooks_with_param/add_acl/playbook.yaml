@@ -1,0 +1,51 @@
+---
+## parameters
+## - username: the user to add
+## - localgoup: the localgroup to add the user to
+
+## QueryValues
+## SetValue
+## CreateSubKey
+## EnumerateSubKeys
+## Notify
+## CreateLink
+## Delete
+## ReadPermissions
+## WriteKey
+## ExecuteKey
+## ReadKey
+## ChangePermissions
+## TakeOwnership
+## FullControl
+
+## FullControl        F Full access, including all rights below.
+## QueryValues        Q Read values from the key.
+## SetValue       	  W Write a value to the key.
+## CreateSubKey       C Create subkeys under the key.
+## EnumerateSubKeys   E List subkeys.
+## Notify       	  N Receive change notifications.
+## CreateLink         L Create symbolic links (not commonly used in registry ACLs).
+## Delete       	  D Delete the key.
+## ReadPermissions    R Read the security descriptor (permissions).
+## WriteKey       	  K Write permissions to the key (modifies security settings).
+## ExecuteKey         X Open the key for execution (not common for registry keys).
+## ReadKey        	  Y (or R)	Read the key contents (equivalent to QueryValues + EnumerateSubKeys + ReadPermissions).
+## ChangePermissions  P Change ACLs (permissions) on the key.
+## TakeOwnership      O Take ownership of the key.
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+  vars:
+    sp_granted: "ellana.caldin"
+    acl_path: "C:\\Users\\aoro.aubergiste\\Documents"
+    rights: "Modify,ReadAttributes"
+  tasks:
+    - name: Grant rights to a security principal
+      ansible.windows.win_acl:
+        path: "{{ acl_path }}"
+        user: "{{ sp_granted }}"
+        rights: "{{ rights }}"
+        type: allow
+        state: present
+#        inherit: ContainerInherit, ObjectInherit
+#        propagation: 'None'

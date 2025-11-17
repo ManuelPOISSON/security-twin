@@ -1,0 +1,44 @@
+---
+name: test
+nodes:
+  - &AD1
+    type: virtual_machine
+    name: "AD1"
+    basebox_id: 68
+    nb_proc: 1
+    memory_size: 4096
+    roles: ['ad']
+
+  - &FILE1
+    type: virtual_machine
+    name: "FILE1"
+    basebox_id: "{{ basebox_id }}"
+    nb_proc: 1
+    memory_size: 2048
+    roles: ['file_server']
+
+  - &ROUTER1
+    type: router
+    name: "Router1"
+
+  - &SW1
+    type: switch
+    name: "Switch1"
+
+links:
+  - a: *SW1
+    b: *ROUTER1
+    c:
+      ip: "192.168.2.1/24"
+      dhcp_server: &DHCP_ROUTER1_INT
+        enabled: 1
+  - a: *SW1
+    b: *AD1
+    c:
+      ip: "192.168.2.2/24"
+      dhcp: *DHCP_ROUTER1_INT
+  - a: *SW1
+    b: *FILE1
+    c:
+      ip: "192.168.2.3/24"
+      dhcp: *DHCP_ROUTER1_INT

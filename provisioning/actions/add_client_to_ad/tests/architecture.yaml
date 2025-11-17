@@ -1,0 +1,59 @@
+---
+name: test
+nodes:
+  - &AD1
+    type: virtual_machine
+    name: "AD1"
+    basebox_id: 68
+    nb_proc: 1
+    memory_size: 2048
+    roles: ['ad']
+
+  - &CLIENT1
+    type: virtual_machine
+    name: "CLIENT1"
+    basebox_id: "{{ basebox_id }}"
+    nb_proc: 1
+    memory_size: 2048
+    roles: ['client']
+
+  - &ADMIN1
+    type: virtual_machine
+    name: "ADMIN1"
+    basebox_id: 76
+    nb_proc: 1
+    memory_size: 2048
+    roles: ['admin']
+
+  - &BOX
+    type: router
+    name: "Box"
+
+  - &SW1
+    type: switch
+    name: "Switch1"
+
+links:
+  - a: *SW1
+    b: *BOX
+    c:
+      ip: "192.168.2.1/24"
+      dhcp_server: &DHCP_BOX_INT
+        enabled: 1
+  - a: *SW1
+    b: *AD1
+    c:
+      ip: "192.168.2.2/24"
+      dhcp: *DHCP_BOX_INT
+
+  - a: *SW1
+    b: *ADMIN1
+    c:
+      ip: "192.168.2.3/24"
+      dhcp: *DHCP_BOX_INT
+
+  - a: *SW1
+    b: *CLIENT1
+    c:
+      ip: "192.168.2.4/24"
+      dhcp: *DHCP_BOX_INT

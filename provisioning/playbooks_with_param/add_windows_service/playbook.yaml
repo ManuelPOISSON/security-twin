@@ -1,0 +1,17 @@
+---
+## parameters
+## - username: the user to add
+## - localgoup: the localgroup to add the user to
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+  vars:
+    service_name: "ellana.caldin"
+    exe_path: "C:\\Users\\aoro.aubergiste\\Documents"
+
+  tasks:
+    - name: Create service
+      ansible.windows.win_service:
+        name: "{{ service_name }}"
+        path: "{{ exe_path }}"
+        start_mode: auto

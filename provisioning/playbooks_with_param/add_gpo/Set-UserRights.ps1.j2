@@ -1,0 +1,40 @@
+# Define the path for the temporary INF file and the security database
+$InfPath      = "$env:TEMP\UserRights.inf"
+$DatabasePath = "$env:TEMP\UserRights.sdb"
+
+# Define a mapping of user rights to the corresponding account(s)
+$rightsMapping = @{
+{% for right, accounts in user_rights_mapping.items() %}
+    "{{ right }}" = @(
+    {%- for acct in accounts -%}
+        "{{ acct }}"{{ "," if not loop.last else "" }}
+    {%- endfor -%}
+    )
+{% endfor %}
+}
+
+# Build the INF file content.
+$infContent = @"
+[Version]
+signature="`$CHICAGO`$"
+Revision=1
+
+[Unicode]
+Unicode=yes
+
+[Privilege Rights]
+"@
+foreach ($right in $rightsMapping.Keys) {
+    # join multiple accounts with commas
+    $acctList = $rightsMapping[$right] -join ", "
+    $infContent += "`r`n$right = $acctList"
+}
+$infContent += "`r`n"
+# Write the INF file with Unicode encoding
+$infContent | Out-File -FilePath $InfPath -Encoding Unicode
+
+# Apply the security configuration using secedit.exe
+secedit.exe /configure /db $DatabasePath /cfg $InfPath /quiet
+gpupdate /force
+
+

@@ -1,0 +1,17 @@
+networkx
+SQLAlchemy
+pymysql
+tqdm
+python-dotenv
+pyvis
+numpy
+typing-extensions
+cdktf
+constructs
+pycdlib
+typeguard<3.0.0
+PyYAML
+ansible~=11.3.0
+ansible-core~=2.18.3
+ansible-runner~=2.4.1
+pywinrm~=0.5.0

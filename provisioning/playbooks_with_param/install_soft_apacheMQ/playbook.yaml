@@ -1,0 +1,76 @@
+- name: install ActiveMQ vulnerable to CVE-2023-46604
+  hosts: "{{ target }}"
+  tasks:
+    - name: S'asurer que le répertoire C:\temp existe
+      ansible.windows.win_file:
+        path: C:\temp
+        state: directory
+
+    - name: Copier Java JDK installer sur la cible
+      ansible.windows.win_copy:
+        src: ./jdk-21_windows-x64_bin.exe
+        dest: C:\temp\jdk-21_windows-x64_bin.exe
+        
+    - name: S'assurer que le répertoire C:\java existe
+      ansible.windows.win_file:
+        path: C:\java
+        state: directory
+        
+    - name: Installer Java JDK
+      ansible.windows.win_shell:
+        _raw_params: 'C:\temp\jdk-21_windows-x64_bin.exe /s INSTALLDIR=C:\Java'
+    
+    - name: Définir la variable d'environnement JAVA_HOME
+      ansible.windows.win_environment:
+        state: present
+        name: JAVA_HOME
+        value: C:\Java
+        level: machine
+
+    - name: Copier le Zip Apache ActiveMQ sur la cible
+      ansible.windows.win_copy:
+        src: ./apache-activemq-5.18.0-bin.zip
+        dest: C:\temp\apache-activemq-5.18.0-bin.zip
+
+    - name: Dézipper Apache ActiveMQ
+      community.windows.win_unzip:
+        src: C:\temp\apache-activemq-5.18.0-bin.zip
+        dest: C:\temp\
+        remove: no
+
+    - name: Remplacer "-Xms1G -Xmx1G" par "-Xms128M -Xmx512M"
+      community.windows.win_lineinfile:
+        path: "C:\\temp\\apache-activemq-5.18.0\\bin\\activemq.bat"
+        regexp: '^.*if "%ACTIVEMQ_OPTS%" == "" set ACTIVEMQ_OPTS=.*$'
+        line: 'if "%ACTIVEMQ_OPTS%" == "" set ACTIVEMQ_OPTS=-Xms128M -Xmx512M -Djava.util.logging.config.file=logging.properties -Djava.security.auth.login.config="%ACTIVEMQ_CONF%\login.config"'
+        state: present
+  
+    - name: Installer ActiveMQ en tant que service Windows
+      win_shell: |
+        Start-Process powershell.exe -ArgumentList "Start-Process 'C:\\temp\\apache-activemq-5.18.0\\bin\\win64\\InstallService.bat' -Verb RunAs" -NoNewWindow
+      args:
+        chdir: C:\temp\apache-activemq-5.18.0\bin\
+      ignore_errors: yes  # Évite qu’une erreur bloque le playbook
+
+    - name: Vérifier si le service ActiveMQ est installé
+      win_shell: sc.exe query "ActiveMQ"
+      register: activemq_service_check
+      changed_when: false  # Cette tâche ne change rien sur la machine
+
+    - name: Extraire l'état du service ActiveMQ
+      set_fact:
+        activemq_installed: "{{ 'STATE' in activemq_service_check.stdout }}"
+
+    - name: Démarrer ActiveMQ si installé
+      win_service:
+        name: "ActiveMQ"
+        start_mode: auto
+        state: started
+      when: activemq_installed
+
+    - name: Vérifier l'état du service ActiveMQ
+      win_shell: "(Get-Service ActiveMQ).Status"
+      register: activemq_status
+  
+    - debug:
+        msg: "ActiveMQ Status: {{ activemq_status.stdout_lines[0] | default('Unknown') }}"

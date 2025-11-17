@@ -1,0 +1,29 @@
+---
+- name: Installation de WinRAR
+  hosts: "{{ target }}"
+  gather_facts: yes
+
+  vars:
+    local_winrar_path: "./winrar-x64-622.exe"  # Chemin local du fichier sur votre machine Ansible
+    remote_winrar_path: "C:\\temp\\winrar-x64-622.exe"  # Destination sur la machine distante
+
+  tasks:
+    - name: Création du répertoire temporaire sur la machine distante
+      win_file:
+        path: C:\temp
+        state: directory
+
+    - name: Copie du fichier d'installation WinRAR vers la machine distante
+      win_copy:
+        src: "{{ local_winrar_path }}"
+        dest: "{{ remote_winrar_path }}"
+
+    - name: Installation de WinRAR en mode silencieux
+      win_command: "{{ remote_winrar_path }} /S"
+      args:
+        creates: "C:\\Program Files\\WinRAR\\WinRAR.exe"
+
+    - name: Suppression du fichier d'installation sur la machine distante
+      win_file:
+        path: "{{ remote_winrar_path }}"
+        state: absent

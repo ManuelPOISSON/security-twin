@@ -1,0 +1,13 @@
+---
+## open network port for RDP on target
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+
+  tasks:
+    - name: Enable RDP
+      win_shell: |
+        Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+#        # firewall rule
+#        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+

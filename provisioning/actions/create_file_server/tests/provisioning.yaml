@@ -1,0 +1,123 @@
+---
+start_date: "2013-11-05T00:00"
+organization: "Evil Corp"
+country_code: "FR"
+aging: true
+
+active_directory:
+  end_nb_accounts: 2
+  birthday_start_year: 1990
+  birthday_end_year: 1995
+  rate_male_gender: 0.7
+  dns_domain_name: amo.ansible
+  domain_netbios_name: AD2012
+  safe_mode_password: password123!
+  original_admin_password: Beezh35;
+  admin_password: Beezh35;
+  admin_username: Administrateur
+  disable_accounts: 0
+  organizational_units:
+    mode: "new"
+    path: ./provisioning/test/resources/organizational_units.csv
+    number: 10
+    possible_names: [
+      'Recherche', 'Développement', 'Finance', 'Audit',
+      "Production"
+    ]
+    list:
+      - name: Amossys
+        path:
+      - name: AVV
+        path: ou=Amossys
+        is_composed_of: real_users  # fake_users, fake_computers, real_computers, real_users, servers, admin
+      - name: Production
+        path: ou=Amossys
+        is_composed_of: fake_users
+      - name: zone1
+        path:
+        is_composed_of: real_computers
+      - name: zone2
+        path:
+        is_composed_of: fake_computers
+      - name: serveur
+        path:
+        is_composed_of: servers
+  groups:
+    mode: "new"
+    path: "./provisioning/test/resources/groups.csv"
+    number: 5
+    possible_names: [
+      'RH', 'R&D', 'Développement', 'Finance', 'Audit',
+      "Production"
+    ]
+    list:
+       - name: comptabilite
+         min: 2
+         max: 4
+         real_users: true
+       - name: rh
+         min: 2
+         max: 4
+       - name: si
+  gpo:
+    - name: "toto"
+      link: "ou=zone1,dc=amo,dc=ansible"
+      gppermissions:
+        - name: "RH"
+          permission: "gpoRead" # GpoRead, GpoApply, GpoEdit, GpoEditDeleteModifySecurity, None
+          targetType: "Group" # Computer, User, Group
+        - name: "Comptabilite"
+          permission: "gpoApply"
+          targetType: "Group"
+    - name: "securite_compte"
+      link: "ou=zone1,dc=amo,dc=ansible"
+    - name: "parefeu"
+      link: "ou=serveur,dc=amo,dc=ansible"
+    - name: "interdit_configuration"
+      link: "dc=amo,dc=ansible"
+    - name: "password"
+      link: "dc=amo,dc=ansible"
+    - name: "pwd"
+      link: "dc=amo,dc=ansible"
+    - name: "file_access_audit"
+      link: "dc=amo,dc=ansible"
+
+file_server:
+  # mode -> "new" or "existing" file tree
+  mode: "new"
+  existing_tree_path: "/tmp/test"
+  size_limit: 1000  # MBytes (0 for no limit)
+  public_directories:
+    - Public
+    - Temp
+    - Sauvegardes
+    - Referentiels
+    - Communication
+    - Reglementations
+  subdirectories:
+    min: 5
+    max: 10
+    names:
+      - Projets
+      - Ressources
+      - References
+      - Formations
+      - Attestations
+      - Documents
+      - Ameliorations
+      - Missions
+  files:
+    min: 5
+    max: 10
+    distribution:
+      # ".*" -> all pattern
+      - "doc(?:m|x)?"
+      - "odt"
+      - "pdf"
+      - "ppt(?:m|x)?"
+      - "xls(?:m|x)?"
+
+period_activity:
+  opening_time: "08:00"
+  ending_time: "19:30"
+  consider_public_holiday: true

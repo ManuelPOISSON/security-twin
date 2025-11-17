@@ -1,0 +1,13 @@
+---
+start_date: "2013-11-05T00:00"
+organization: "Evil Corp"
+country_code: "FR"
+aging: true
+
+user_hosts:
+  enable_file_generation: true
+
+period_activity:
+  opening_time: "08:00"
+  ending_time: "19:30"
+  consider_public_holiday: true

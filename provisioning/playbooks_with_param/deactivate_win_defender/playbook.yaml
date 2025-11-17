@@ -1,0 +1,16 @@
+- name: deactivate windows defender
+  hosts: "{{ target }}"
+  tasks:
+    - name: Désactiver la protection temps réel Windows Defender
+      win_shell: |
+        Set-MpPreference -DisableRealtimeMonitoring $true
+      register: defender_status
+
+    - name: Vérifier si la protection est bien désactivée
+      win_shell: |
+        Get-MpPreference | Select-Object -ExpandProperty DisableRealtimeMonitoring
+      register: defender_check
+
+    - name: Afficher le statut de Windows Defender
+      debug:
+        msg: "Protection temps réel désactivée: {{ defender_check.stdout }}"

@@ -1,0 +1,14 @@
+---
+- name: Create a file on a Windows machine
+  hosts: "{{ target }}"
+  tasks:
+    - name: Create parent directories if they do not exist
+      win_shell: |
+        $parentDir = Split-Path -Parent '{{ file_path }}'
+        if (-Not (Test-Path $parentDir)) {
+            New-Item -ItemType Directory -Path $parentDir -Force
+        }
+    - name: Create a file with content "test"
+      win_copy:
+        content: "test"
+        dest: "{{ file_path }}"

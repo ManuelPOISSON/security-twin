@@ -1,0 +1,41 @@
+---
+
+## Parameters:
+## - username: the username of the admin account. The username should contain the domain prefix, such as  "AD2012\\john".
+## - password: the password of the admin account.
+## - hostname: the hostname of the machine that is willing to connect to the AD.
+## - dns_ip: Single or ordered list of DNS servers (IPv4 addresses only) to configure for lookup.
+
+tasks:
+- name: Flush DNS cache
+  ansible.windows.win_powershell:
+    script: |
+      Clear-DnsClientCache
+- name: Add DNS to client
+  win_dns_client:
+    adapter_names: '*'
+    ipv4_addresses: "{{ dns_ip }}"
+  retries: 2
+- name: Wait for AD Server to be reachable
+  win_wait_for:
+    host: "{{ ad_server_ip }}"
+    port: "{{ ad_server_port | default(389) }}"
+    state: started
+  timeout: 60
+  register: ad_server_reachable
+  become: no
+- name: Add to AD
+  win_domain_membership:
+    dns_domain_name: "{{ dns_domain_name | default('ad2012.local') }}"
+    hostname: "{{ hostname }}"
+    domain_admin_user: "{{ username }}"
+    domain_admin_password: "{{ password }}"
+    state: domain
+  register: domain_state
+  until: "domain_state is not failed"
+  retries: 5
+  delay: 10
+# - name: Reboot after installation
+#   ansible.windows.win_reboot:
+- name: Reboot client
+  ansible.windows.win_reboot:

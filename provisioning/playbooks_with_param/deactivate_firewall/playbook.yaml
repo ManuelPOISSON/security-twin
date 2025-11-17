@@ -1,0 +1,12 @@
+---
+- name: deactivate firewall allprofiles
+  hosts: "{{ target }}"
+  gather_facts: 'no'
+  vars:
+      firewall_profile: "allprofiles" # possible values: privateprofile, publicprofile, domainprofile, allprofiles
+      new_state: "off"
+
+  tasks:
+    - name: deactivate Firewall
+      win_shell: "netsh advfirewall set {{ firewall_profile }} state {{ new_state }}"
+

@@ -1,0 +1,16 @@
+ldap3==2.10.2rc2
+dnspython
+dpapi_ng
+pywinrm
+pypsrp
+pycryptodome
+gssapi~=1.9.0; sys.platform!="win32"
+winkerberos; sys.platform=="win32"
+krb5~=0.7.1; sys.platform!="win32"
+cyclonedx-python-lib
+paramiko
+tqdm
+pyasn1
+requests
+
+git+https://github.com/fortra/impacket

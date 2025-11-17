@@ -1,0 +1,37 @@
+---
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+  vars:
+    user_or_group: "lab\\aoro.aubergiste" # warning, \\ required
+    rights_list: "Enable,RemoteAccess" # $WBEM_RIGHTS_STRINGS = 'Enable','MethodExecute','FullWrite','PartialWrite','ProviderWrite','RemoteAccess','ReadSecurity','WriteSecurity'
+    script_name: "Set-WmiNamespaceSecurity.ps1"
+    ansible_become: true
+    ansible_become_method: runas
+    ansible_become_user: "{{ domain_user }}" # become a domain user is needed to find ADuser/groups
+    ansible_become_password: "{{ domain_admin_password }}"
+
+  tasks:
+#  - name: Test win_ping module
+#    win_ping:gpupdate
+  - name: copy local file to remote
+    win_copy:
+      src: "{{ playbook_dir }}/{{ script_name }}"
+      dest: "%temp%\\{{ script_name }}"
+    retries: 2
+    become: true
+    register: copy_result
+    failed_when: copy_result is failed
+  - block:
+      - name: run script to grant rights
+        # Allowed operations: add delete
+        win_shell: "cd $env:TEMP; .\\{{ script_name }} {{ namespace_path }} add {{ user_or_group }} {{ rights_list }}"
+# "cd $env:TEMP; .\\{{ script_name }} root/cimv2 add {{ user_or_group }} {{ rights_list }}"
+    rescue:
+      - name: Fail the playbook if copy task fails
+        fail:
+          msg: "Failed to copy the script to the remote machine or script execution failed. Exiting playbook."
+  - name: remove script
+    ansible.windows.win_file:
+      path: "%temp%\\{{ script_name }}"
+      state: absent

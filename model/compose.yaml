@@ -1,0 +1,28 @@
+---
+services:
+
+  db:
+    image: mysql:8.0.29
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+    networks:
+      - app_net
+    ports:
+      - "3306:3306"  # Expose port 3306 to the host
+      - "33060:33060"  # Expose port 33060 to the host
+
+
+volumes:
+  db-lock:
+
+networks:
+  app_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+

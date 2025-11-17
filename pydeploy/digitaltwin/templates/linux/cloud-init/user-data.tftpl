@@ -1,0 +1,19 @@
+#cloud-config
+hostname: ${hostname}
+%{ if ssh_key != "" ~}
+ssh_authorized_keys:
+  - ${ssh_key}
+%{ endif ~}
+disable_root: false
+chpasswd:
+  list: |
+    root:root
+    dummy:dummy
+  expire: False
+ssh_pwauth: true
+%{ if ssh_key != "" ~}
+users:
+  - name: root
+    ssh_authorized_keys:
+      - ${ssh_key}
+%{ endif ~}

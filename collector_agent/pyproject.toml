@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 120  # Optional: set to your preferred max line length
+target-version = "py311"
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[[tool.mypy.overrides]]
+module = ["dpapi_ng.*"]
+ignore_missing_imports = true

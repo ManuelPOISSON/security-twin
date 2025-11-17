@@ -1,0 +1,20 @@
+---
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+
+  tasks:
+  - name: copy local file to remote
+    win_copy:
+      src: "{{ src_dir }}/{{ script_name }}"
+      dest: "%temp%\\{{ script_name }}"
+    retries: 2
+    register: copy_result
+    failed_when: copy_result is failed
+  - block:
+      - name: run script to grant rights
+        win_shell: "cd $env:TEMP; pwd; ls .\\{{ script_name }}"
+    rescue:
+      - name: Fail the playbook if copy task fails
+        fail:
+          msg: "Failed to copy the script to the remote machine. Exiting playbook."

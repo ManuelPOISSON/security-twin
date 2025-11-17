@@ -1,0 +1,34 @@
+---
+## parameters
+## - domain: the domain name 'domain.int
+## - adminPasswd: the password of the domain admin 'pwdPWD124#'
+## - netwId: network range for reverse DNS '10.0.20.0/24'
+
+
+- hosts: "{{ target }}"
+  gather_facts: 'no'
+  vars:
+    script_name: "create_AD.ps1"
+
+  tasks:
+  - name: copy local file to remote
+    win_copy:
+      src: "{{ playbook_dir }}/{{ script_name }}"
+      dest: "%temp%\\{{ script_name }}"
+    retries: 2
+    register: copy_result
+    failed_when: copy_result is failed
+  - block:
+      - name: run script to create Active Directory
+        win_shell: "cd $env:TEMP; .\\{{ script_name }} {{ domain }} {{ adminPasswd }} {{ netwId }}"
+    rescue:
+      - name: Wait for system to reboot and become reachable again
+        wait_for_connection:
+          timeout: 900 # 15 min
+          delay: 5     
+  
+  - name: remove script
+    ansible.windows.win_file:
+      path: "%temp%\\{{ script_name }}"
+      state: absent
+    

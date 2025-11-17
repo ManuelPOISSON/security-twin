@@ -1,0 +1,78 @@
+---
+start_date: "2013-11-05T00:00"
+organization: "Evil Corp"
+country_code: "FR"
+aging: true
+
+active_directory:
+  end_nb_accounts: 10
+  birthday_start_year: 1990
+  birthday_end_year: 1995
+  rate_male_gender: 0.7
+  dns_domain_name: amo.ansible
+  domain_netbios_name: AD2012
+  safe_mode_password: password123!
+  original_admin_password: Beezh35;
+  admin_password: Beezh35;
+  admin_username: Administrateur
+  disable_accounts: 5
+  organizational_units:
+    mode: "new"
+    path: ./provisioning/test/resources/organizational_units.csv
+    number: 25
+    possible_names: [
+      'Recherche', 'Développement', 'Finance', 'Audit',
+      "Production"
+    ]
+    list:
+      - name: Amossys
+      - name: AVV
+        path: ou=Amossys
+        is_composed_of: real_users  # fake_users, fake_computers, real_computers, real_users, servers, admin
+      - name: zone1
+        is_composed_of: real_computers
+      - name: zone2
+        is_composed_of: fake_computers
+      - name: serveur
+        is_composed_of: servers
+  groups:
+    mode: "new"
+    path: "./provisioning/test/resources/groups.csv"
+    number: 20
+    possible_names: [
+      'RH', 'R&D', 'Développement', 'Finance', 'Audit',
+      "Production"
+    ]
+    list:
+       - name: comptabilite
+         min: 5
+         max: 10
+         real_users: true
+       - name: rh
+         min: 5
+         max: 10
+       - name: si
+
+admin_hosts:
+  scheduled_tasks:
+    - name: Remote administration
+      script: |
+        Param(
+            [Parameter(Mandatory=$true)]
+            [Object[]]
+            $RemoteClients
+        )
+
+        $RemoteClients | ForEach-Object {
+            Invoke-Command -ComputerName $_.ComputerName -SessionOption $(New-PSSessionOption -NoMachineProfile) `
+            -ScriptBlock { Param($remoteClient)
+                Set-Location -Path "C:\Users\$($remoteClient.UserName)"
+                "$(Get-Date -Format "[MM/dd/yyyy HH:mm]") Remote access" >> AdminLogs.txt
+            } -ArgumentList $_
+        }
+      interval: "PT5M"  # ISO 8601 Duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S
+
+period_activity:
+  opening_time: "08:00"
+  ending_time: "19:30"
+  consider_public_holiday: true

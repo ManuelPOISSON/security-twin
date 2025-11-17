@@ -1,0 +1,171 @@
+---
+- name: Set up Java 8 and Gradle build environment as in Dockerfile
+  hosts: "{{ target }}"
+  become: true
+  vars:
+    gradle_version: "7.3.1"
+    gradle_dist: "gradle-{{ gradle_version }}-bin.zip"
+    java8_package: "openjdk-8-jdk"
+    app_dir: "/app"
+    src_dir: "/home/gradle/src"
+    jar_pattern: "build/libs/*.jar"
+    jar_dest: "{{ app_dir }}/spring-boot-application.jar"
+    gradle_user: "gradle"
+    java_home: "/root/.sdkman/candidates/java/8.0.462-tem"
+    app_name: "vulnerable-spring-boot"
+
+  tasks:
+    - name: Ensure required packages
+      apt:
+        name:
+          - curl
+          - zip
+          - unzip
+          - wget
+          - locales
+        state: present
+        update_cache: yes
+
+    - name: Install sdkman and java8
+      shell: |
+        curl -s 'https://get.sdkman.io' | bash
+        source /root/.sdkman/bin/sdkman-init.sh
+        sdk install java 8.0.462-tem
+      args:
+        executable: /bin/bash
+
+    - name: Ensure en_US.UTF-8 locale
+      lineinfile:
+        path: /etc/locale.gen
+        line: 'en_US.UTF-8 UTF-8'
+        state: present
+      register: locale_added
+
+    - name: Run locale-gen if needed
+      command: locale-gen
+      when: locale_added.changed
+
+    - name: Set LANG to en_US.UTF-8
+      lineinfile:
+        path: /etc/environment
+        regexp: '^LANG='
+        line: 'LANG=en_US.UTF-8'
+
+    - name: Create gradle user
+      user:
+        name: "{{ gradle_user }}"
+        shell: /bin/bash
+        home: "/home/{{ gradle_user }}"
+        state: present
+        create_home: yes
+
+    - name: Copy Gradle archive to remote
+      copy:
+        src: ./{{ gradle_dist }}
+        dest: /home/{{ gradle_user }}/{{ gradle_dist }}
+        mode: '0644'
+        owner: "{{ gradle_user }}"
+        group: "{{ gradle_user }}"
+
+    - name: Unpack Gradle
+      become_user: "{{ gradle_user }}"
+      unarchive:
+        src: "/home/{{ gradle_user }}/{{ gradle_dist }}"
+        dest: "/home/{{ gradle_user }}/"
+        remote_src: yes
+        creates: "/home/{{ gradle_user }}/gradle-{{ gradle_version }}"
+        
+
+    - name: Add Gradle to PATH for all users
+      copy:
+        dest: /etc/profile.d/gradle.sh
+        content: 'export PATH=/home/{{ gradle_user }}/gradle-{{ gradle_version }}/bin:$PATH'
+        mode: '0755'
+
+    - name: Set JAVA_HOME in /etc/environment
+      lineinfile:
+        path: /etc/environment
+        regexp: '^JAVA_HOME='
+        line: 'JAVA_HOME={{ java_home }}'
+
+    - name: Create application and source directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ gradle_user }}"
+        group: "{{ gradle_user }}"
+        mode: '0755'
+      loop:
+        - "{{ app_dir }}"
+        - "{{ src_dir }}"
+
+    - name: Copy application source code
+      copy:
+        src: ./
+        dest: "{{ app_dir }}/"
+        owner: "{{ gradle_user }}"
+        group: "{{ gradle_user }}"
+
+    - name: Build the application JAR using Gradle
+      become: true
+      shell: sh ./gradlew bootJar --no-daemon
+      args:
+        chdir: "{{ app_dir }}"
+        executable: /bin/bash
+      environment:
+        JAVA_HOME: "{{ java_home }}"
+
+    - name: Copy built JAR to /app
+      copy:
+        src: "{{ app_dir }}/build/libs/log4shell-vulnerable-app-0.0.1-SNAPSHOT.jar"
+        dest: "{{ jar_dest }}"
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Create Java home helper script (docker-java-home equivalent)
+      copy:
+        dest: /usr/local/bin/docker-java-home
+        mode: '0755'
+        content: |
+          #!/bin/sh
+          set -e
+          dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
+
+    - name: Create systemd service file for Spring Boot app
+      copy:
+        dest: /etc/systemd/system/{{ app_name }}.service
+        content: |
+          [Unit]
+          Description={{ app_name }} service
+          After=network.target
+
+          [Service]
+          Type=simple
+          User=root
+          WorkingDirectory={{ app_dir }}
+          Environment=JAVA_HOME={{ java_home }}
+          ExecStart={{ java_home }}/bin/java -jar {{ jar_dest }}
+          Restart=on-failure
+          RestartSec=5
+          SuccessExitStatus=143
+          StandardOutput=journal
+          StandardError=journal
+
+          [Install]
+          WantedBy=multi-user.target
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload systemd daemon
+      command: systemctl daemon-reload
+
+    - name: Enable and start Spring Boot service
+      systemd:
+        name: "{{ app_name }}.service"
+        enabled: yes
+        state: started
+        daemon_reload: no
+

@@ -1,0 +1,99 @@
+{
+  "hosts": [
+    {
+      "id": "S-0",
+      "name": "c0",
+      "vmem": "4096",
+      "disk_size": "20GB",
+      "vcpu": "2",
+      "os_type": "windows",
+      "os": "windows10",
+      "version": "21H2",
+      "interfaces": [
+        {
+          "net_name": "intnet0",
+          "interface_name": "Ethernet Instance 0",
+          "mac_address": "c0:47:0e:6a:b0:a0",
+          "dhcp": "False",
+          "ipv4_address": "192.168.122.254/24",
+          "ipv4_netmask": "255.255.255.0",
+          "gateway": "192.168.1.254"
+        }
+      ]
+    },
+    {
+      "id": "S-1",
+      "name": "c1",
+      "vmem": "4096",
+      "disk_size": "20GB",
+      "vcpu": "2",
+      "os_type": "windows",
+      "os": "windows10",
+      "version": "21H2",
+      "interfaces": [
+        {
+          "net_name": "intnet0",
+          "interface_name": "Ethernet Instance 0",
+          "mac_address": "c0:47:0e:6a:b0:a1",
+          "dhcp": "False",
+          "ipv4_address": "192.168.122.254/24",
+          "ipv4_netmask": "255.255.255.0",
+          "gateway": "192.168.1.254"
+        }
+      ]
+    },
+    {
+      "id": "S-2",
+      "name": "c2",
+      "vmem": "4096",
+      "disk_size": "20GB",
+      "vcpu": "2",
+      "os_type": "windows",
+      "os": "windows10",
+      "version": "21H2",
+      "interfaces": [
+        {
+          "net_name": "intnet0",
+          "interface_name": "Ethernet Instance 0",
+          "mac_address": "c0:47:0e:6a:b0:a2",
+          "dhcp": "False",
+          "ipv4_address": "192.168.122.254/24",
+          "ipv4_netmask": "255.255.255.0",
+          "gateway": "192.168.1.254"
+        }
+      ]
+    },
+    {
+      "id": "S-3",
+      "name": "DC0",
+      "vmem": "4096",
+      "disk_size": "40GB",
+      "vcpu": "2",
+      "os_type": "windows",
+      "os": "server19",
+      "version": "17763.737",
+      "interfaces": [
+        {
+          "net_name": "intnet0",
+          "interface_name": "Ethernet Instance 0",
+          "mac_address": "c0:47:0e:6a:b0:a3",
+          "dhcp": "False",
+          "ipv4_address": "192.168.122.254/24",
+          "ipv4_netmask": "255.255.255.0",
+          "gateway": "192.168.1.254"
+        }
+      ]
+    }
+  ],
+  "networks": [
+    {
+      "id": "N-0",
+      "name": "intnet0",
+      "mode": "nat",
+      "addresses": [
+        "192.168.122.0/24"
+      ],
+      "dhcp": true
+    }
+  ]
+}

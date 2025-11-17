@@ -1,0 +1,21 @@
+---
+- hosts: "{{ target }}"
+  gather_facts: no
+  vars:
+    script_name: "first_runas.vbs"
+  tasks:
+  - name: copy local file to remote
+    win_copy:
+      src: "{{ playbook_dir }}/{{ script_name }}"
+      dest: "C:\\Users\\Public\\Documents\\{{ script_name }}"
+    retries: 2
+    register: copy_result
+    failed_when: copy_result is failed
+  - block:
+      - name: msg require user interaction
+        debug:
+          msg: "Login on {{ target }} as user {{ can_runas}} with password {{ can_runas_password }} and run the following command: cscript.exe C:\\Users\\Public\\Documents\\{{ script_name }}"
+    rescue:
+      - name: Fail the playbook if copy task fails or winshell failed
+        fail:
+          msg: "Failed to copy script to remote machine or to execute script. Exiting playbook."
