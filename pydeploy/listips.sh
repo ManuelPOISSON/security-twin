@@ -8,9 +8,9 @@ if [[ -z "${1:-}" ]]; then
     exit 1
 fi
 
-for vm in $(virsh list --state-running --name); do
+for vm in $(virsh -c qemu:///system list --state-running --name); do
     # Get IPs using virsh domifaddr
-    e=$(virsh domifaddr "$vm")
+    e=$(virsh -c qemu:///system domifaddr "$vm")
     # echo "$vm $e"
     # echo e only lines matching 192.168.<argument>[0-9]*
     if [[ "$1" == "all" ]]; then

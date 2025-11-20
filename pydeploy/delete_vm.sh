@@ -8,7 +8,7 @@ if [[ -z "${1:-}" ]]; then
 fi
 
 IFS=$'\n'
-for vm in $(virsh list --all --name | grep -E "^manu_00$1"); do
+for vm in $(virsh list --all --name | grep -E "^vm_00$1"); do
     echo -n "Processing VM: $vm "
     sleep 5
     echo "go"

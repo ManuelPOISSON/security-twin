@@ -296,6 +296,14 @@ class UserMapper(IMapper):
 
             for loc_user in local_data.local_users:
                 results.append(User(id_machine=comp_name, name=loc_user.name))
+
+        if data.linux_local_data:
+            for machine_linux in data.linux_local_data:
+                for user in machine_linux.users:
+                    results.append(
+                        User(id_machine=machine_linux.machine_name, name=user.username)
+                    )
+
         return results
 
 

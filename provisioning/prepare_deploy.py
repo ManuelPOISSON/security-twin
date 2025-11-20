@@ -140,7 +140,7 @@ def ip_match_from_subprocess(
 def get_name_to_ip(
     expected_count: int,
     subnet_range: int = 0,
-    path_script: Path = Path("../pydeploy/listips.sh"),
+    path_script: Path = Path("./pydeploy/listips.sh"),
     file_hardcoded_match=None,
 ) -> dict[str, str]:
     if subnet_range == 0 and file_hardcoded_match is None:

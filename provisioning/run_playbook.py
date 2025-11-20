@@ -242,10 +242,13 @@ def runas_ask_user_action(cmds: list[Cmd]) -> None:
             str_cmd = str(cmd.val)
             # TODO make script_name dynamic by looking playbook model/provisioning/playbooks_with_param/runas/playbook.yaml
             script_name = "first_runas.vbs"
+            target = str(str_cmd.split('target=')[1]).split("'")[1]
+            user = str(str_cmd.split('can_runas=')[1]).split("'")[1]
+            password = str(str_cmd.split('can_runas_password=')[1]).split("'")[1]
             text = (
-                f"Login on {str(str_cmd.split('target=')[1]).split("'")[1]} "
-                f"as user {str(str_cmd.split('can_runas=')[1]).split("'")[1]} "
-                f"with password {str(str_cmd.split('can_runas_password=')[1]).split("'")[1]} "
+                f"Login on {target} "
+                f"as user {user} "
+                f"with password {password} "
                 f"and run the following command: cscript.exe C:\\Users\\Public\\Documents\\{script_name}"  # noqa E231
             )
             print("\033[95m" + f"User manual interaction required\n{text}" + "\033[0m")

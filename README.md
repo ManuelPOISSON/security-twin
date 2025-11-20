@@ -25,7 +25,7 @@ Follow basic usage or advanced usage
 ## Basic usage
 
 Each step gives you 2 options.
-Either use the ready to use input file (option A), or generate the input file yourself (option B).
+Either use the **ready to use input file** (option A), or generate the input file yourself (option B).
 
 ### 0- install prerequisites and setup the database.
 
@@ -37,10 +37,12 @@ See [Prerequisites](#prerequisites)
 nothing to do
 
 - **Option B**
-run the command to produce a file `data-ISLAB` containing raw
+run the command to produce a file `data-ISLAB`.
 ```bash
 # TODO
 ```
+the command uses our data collector to query ISLAB, an example information system made of 8 VMs configured as described in the paper.
+
 
 ### 2- Populate the data model
 
@@ -56,7 +58,7 @@ Output ends with `Database 'model' successfully filled with data from data/lab_s
 ### 3- Build the attack position graph
 
 - **Option A**
-nothing to do
+nothing to do, a graph is already build and ready to use
 
 - **Option B**
 ```
@@ -64,15 +66,15 @@ python -m attack_graph b --graph-path data/graph/myGraph
 ```
 Output displays general statistics about the graph
 ```text
-Graph 'myGraph' has 117 nodes and 454 edges
+Graph 'myGraph' has 400 nodes and 15317 edges
 Edge labels count:
-  CVE_2023_38831_winrar: 306
-  CVE_2020_1472_zerologon: 111
-  RDP: 25
-  PSRemote: 5
-  runas: 1
-  wmic: 5
-  ServiceExeModify: 1
+  CVE_2020_1472_zerologon: 9700
+  CVE_2021_44228_log4j: 2328
+  CVE_2023_38831_winrar: 3080
+  RDP: 30
+  wmic: 72
+  PSRemote: 72
+  ServiceExeModify: 35
 ```
 
 
@@ -84,7 +86,7 @@ Edge labels count:
 Search attack path in the graph starting from `c0 u0` (attack position with user `u0` on host `h0`)
 
 ```bash
-python -m attack_graph l --graph-path data/graph/myGraph human c0 u0
+python -m attack_graph l --graph-path data/graph/ISLAB human c0 u0
 ```
 Output all path found. 
 ```text
@@ -255,7 +257,7 @@ docker compose -f model/compose.yaml up -d db
 
 Wait until the container (`model-db-1`) status shows `(healthy)`:
 ```bash
-docker container ls
+docker container ls | grep model-db-1
 ```
 
 Note: If you encounter IP address conflicts, modify `model/compose.yaml` to use a different subnet (e.g., `172.99.0.0/16` instead of `172.20.0.0/16`).

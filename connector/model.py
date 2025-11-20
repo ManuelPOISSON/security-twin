@@ -256,9 +256,16 @@ class LocalComputerData:
 
 
 @dataclass()
+class LinuxUser:
+    username: str
+    uid: str
+
+
+@dataclass()
 class LinuxData:
     machine_name: str
     softwares: list[Software]
+    users: list[LinuxUser]
 
 
 @dataclass(kw_only=True)

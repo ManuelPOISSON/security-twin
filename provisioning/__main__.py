@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 import subprocess
 import sys
@@ -118,9 +119,8 @@ def parse_args():
 
 
 def main():
-
     args = parse_args()
-    engine: Engine = create_engine(f'{engine_base_path}{connection_cred["db_name"]}')
+    engine: Engine = create_engine(f"{engine_base_path}{connection_cred['db_name']}")
 
     # ### start optional arguments, could be set to None ###
     filter_service_names = {
@@ -136,7 +136,7 @@ def main():
     all_targets = get_targets(inventory_path)
     print("Provisioning on ips:")
     for target_obj in all_targets.values():
-        print(f"{'\n'.join([tar.ip_address for tar in target_obj.targets_list])}")
+        print("\n".join(tar.ip_address for tar in target_obj.targets_list))
 
     generate_yaml.main(engine, inventory_path)
     all_cmds = generate_all_commands(
@@ -154,7 +154,9 @@ def main():
             )
         except subprocess.CalledProcessError as e:
             logging.error(f"{e}")
-            logging.info(f"Maybe VMs were not fully booted. Retry provisionning with {args}")
+            logging.info(
+                f"Maybe VMs were not fully booted. Retry provisionning with {args}"
+            )
 
     elif args.action == "show":
         show_all_commands(all_cmds)

@@ -807,9 +807,6 @@ def main(args: argparse.Namespace) -> None:
 
 
 if __name__ == "__main__":
-    # set logging to info
-    logging.getLogger().setLevel(logging.INFO)
-
     parser = argparse.ArgumentParser(description="Database management script")
     subparsers = parser.add_subparsers(dest="command", help="Sub-command help")
 
