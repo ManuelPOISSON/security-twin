@@ -1,0 +1,24 @@
+[
+    {
+        "registry": "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*",
+        "softwares": [
+            {
+                "name": "Microsoft Edge",
+                "version": "142.0.3595.90"
+            },
+            {
+                "name": "Microsoft Edge WebView2 Runtime",
+                "version": "142.0.3595.90"
+            }
+        ]
+    },
+    {
+        "registry": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*",
+        "softwares": [
+            {
+                "name": "WinRAR 6.22 (64-bit)",
+                "version": "6.22.0"
+            }
+        ]
+    }
+]

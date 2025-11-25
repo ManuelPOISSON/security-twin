@@ -100,9 +100,6 @@ class ParserAdData(BaseParser):
 
     def __generate_name(self, obj: object, field: Field):
         if not isinstance(obj, AdObject):
-            logger.warning(
-                f"Trying to generate a name for a non-LdapObject instance, instance type : {type(obj)}"
-            )
             return
 
         if field.name != "name":

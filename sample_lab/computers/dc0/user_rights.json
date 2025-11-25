@@ -1,0 +1,183 @@
+[
+    {
+        "local_principal": {
+            "sid": "S-1-1-0"
+        },
+        "permissions": [
+            "SeNetworkLogonRight",
+            "SeChangeNotifyPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-11"
+        },
+        "permissions": [
+            "SeNetworkLogonRight",
+            "SeMachineAccountPrivilege",
+            "SeChangeNotifyPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-544"
+        },
+        "permissions": [
+            "SeNetworkLogonRight",
+            "SeBackupPrivilege",
+            "SeChangeNotifyPrivilege",
+            "SeSystemtimePrivilege",
+            "SeCreatePagefilePrivilege",
+            "SeDebugPrivilege",
+            "SeRemoteShutdownPrivilege",
+            "SeIncreaseQuotaPrivilege",
+            "SeIncreaseBasePriorityPrivilege",
+            "SeLoadDriverPrivilege",
+            "SeBatchLogonRight",
+            "SeInteractiveLogonRight",
+            "SeSecurityPrivilege",
+            "SeSystemEnvironmentPrivilege",
+            "SeProfileSingleProcessPrivilege",
+            "SeSystemProfilePrivilege",
+            "SeRestorePrivilege",
+            "SeShutdownPrivilege",
+            "SeTakeOwnershipPrivilege",
+            "SeUndockPrivilege",
+            "SeEnableDelegationPrivilege",
+            "SeManageVolumePrivilege",
+            "SeRemoteInteractiveLogonRight",
+            "SeImpersonatePrivilege",
+            "SeCreateGlobalPrivilege",
+            "SeTimeZonePrivilege",
+            "SeCreateSymbolicLinkPrivilege",
+            "SeDelegateSessionUserImpersonatePrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-554"
+        },
+        "permissions": [
+            "SeNetworkLogonRight",
+            "SeChangeNotifyPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-9"
+        },
+        "permissions": [
+            "SeNetworkLogonRight"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-549"
+        },
+        "permissions": [
+            "SeBackupPrivilege",
+            "SeSystemtimePrivilege",
+            "SeRemoteShutdownPrivilege",
+            "SeRestorePrivilege",
+            "SeShutdownPrivilege",
+            "SeTimeZonePrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-551"
+        },
+        "permissions": [
+            "SeBackupPrivilege",
+            "SeBatchLogonRight",
+            "SeRestorePrivilege",
+            "SeShutdownPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-19"
+        },
+        "permissions": [
+            "SeChangeNotifyPrivilege",
+            "SeSystemtimePrivilege",
+            "SeAuditPrivilege",
+            "SeIncreaseQuotaPrivilege",
+            "SeAssignPrimaryTokenPrivilege",
+            "SeImpersonatePrivilege",
+            "SeCreateGlobalPrivilege",
+            "SeTimeZonePrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-20"
+        },
+        "permissions": [
+            "SeChangeNotifyPrivilege",
+            "SeAuditPrivilege",
+            "SeIncreaseQuotaPrivilege",
+            "SeAssignPrimaryTokenPrivilege",
+            "SeImpersonatePrivilege",
+            "SeCreateGlobalPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-90-0"
+        },
+        "permissions": [
+            "SeIncreaseBasePriorityPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-550"
+        },
+        "permissions": [
+            "SeLoadDriverPrivilege",
+            "SeShutdownPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-559"
+        },
+        "permissions": [
+            "SeBatchLogonRight"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-80-0"
+        },
+        "permissions": [
+            "SeServiceLogonRight"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420"
+        },
+        "permissions": [
+            "SeSystemProfilePrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-6"
+        },
+        "permissions": [
+            "SeImpersonatePrivilege",
+            "SeCreateGlobalPrivilege"
+        ]
+    },
+    {
+        "local_principal": {
+            "sid": "S-1-5-32-545"
+        },
+        "permissions": [
+            "SeIncreaseWorkingSetPrivilege"
+        ]
+    }
+]

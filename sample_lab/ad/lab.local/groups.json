@@ -1,0 +1,565 @@
+[
+    {
+        "distinguishedName": "CN=Administrators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{ae957dc0-17b1-4aea-a24d-52adc28c13fb}",
+        "objectSid": "S-1-5-32-544",
+        "sAMAccountName": "Administrators",
+        "member": [
+            "CN=Domain Admins,CN=Users,DC=lab,DC=local",
+            "CN=Enterprise Admins,CN=Users,DC=lab,DC=local",
+            "CN=Administrateur,CN=Users,DC=lab,DC=local",
+            "CN=Administrator,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Administrators"
+    },
+    {
+        "distinguishedName": "CN=Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{ede8c83c-8a82-48f0-ac63-bf03514da4a5}",
+        "objectSid": "S-1-5-32-545",
+        "sAMAccountName": "Users",
+        "member": [
+            "CN=Domain Users,CN=Users,DC=lab,DC=local",
+            "CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+            "CN=S-1-5-4,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+            "CN=User,CN=Users,DC=lab,DC=local",
+            "CN=Administrateur,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Users"
+    },
+    {
+        "distinguishedName": "CN=Guests,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{b9baa83a-3912-450a-945b-a3303676130a}",
+        "objectSid": "S-1-5-32-546",
+        "sAMAccountName": "Guests",
+        "member": [
+            "CN=Domain Guests,CN=Users,DC=lab,DC=local",
+            "CN=Guest,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Guests"
+    },
+    {
+        "distinguishedName": "CN=Print Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{128ac260-93dd-4a04-95e7-705fa51b8c34}",
+        "objectSid": "S-1-5-32-550",
+        "sAMAccountName": "Print Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Print Operators"
+    },
+    {
+        "distinguishedName": "CN=Backup Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{bfa4aee4-cfee-4e72-9596-be90d8e7581c}",
+        "objectSid": "S-1-5-32-551",
+        "sAMAccountName": "Backup Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Backup Operators"
+    },
+    {
+        "distinguishedName": "CN=Replicator,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{71f51a12-0dc9-474d-a81f-64a22972bc3c}",
+        "objectSid": "S-1-5-32-552",
+        "sAMAccountName": "Replicator",
+        "member": [],
+        "memberOf": [],
+        "name": "Replicator"
+    },
+    {
+        "distinguishedName": "CN=Remote Desktop Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{aba95cd6-2ba1-4157-b4e9-3e1a36e612de}",
+        "objectSid": "S-1-5-32-555",
+        "sAMAccountName": "Remote Desktop Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Remote Desktop Users"
+    },
+    {
+        "distinguishedName": "CN=Network Configuration Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{a3325c5e-f05c-4d24-a19a-54829ed2f582}",
+        "objectSid": "S-1-5-32-556",
+        "sAMAccountName": "Network Configuration Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Network Configuration Operators"
+    },
+    {
+        "distinguishedName": "CN=Performance Monitor Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{3efa71fe-7fa1-47ed-bbbb-560ab4545946}",
+        "objectSid": "S-1-5-32-558",
+        "sAMAccountName": "Performance Monitor Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Performance Monitor Users"
+    },
+    {
+        "distinguishedName": "CN=Performance Log Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{90267e66-df9c-4a6a-8c72-13dd4e3861b0}",
+        "objectSid": "S-1-5-32-559",
+        "sAMAccountName": "Performance Log Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Performance Log Users"
+    },
+    {
+        "distinguishedName": "CN=Distributed COM Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{4a3e6cf3-f5fb-4c1d-a62c-c4a71ae2c203}",
+        "objectSid": "S-1-5-32-562",
+        "sAMAccountName": "Distributed COM Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Distributed COM Users"
+    },
+    {
+        "distinguishedName": "CN=IIS_IUSRS,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{b6ea66e3-8070-4e74-83b9-932a439c64c9}",
+        "objectSid": "S-1-5-32-568",
+        "sAMAccountName": "IIS_IUSRS",
+        "member": [
+            "CN=S-1-5-17,CN=ForeignSecurityPrincipals,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "IIS_IUSRS"
+    },
+    {
+        "distinguishedName": "CN=Cryptographic Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{6d3f8f09-937f-4077-a075-f7c79eadc082}",
+        "objectSid": "S-1-5-32-569",
+        "sAMAccountName": "Cryptographic Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Cryptographic Operators"
+    },
+    {
+        "distinguishedName": "CN=Event Log Readers,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{58ef8505-0f84-4cd3-8219-fe7f9800c413}",
+        "objectSid": "S-1-5-32-573",
+        "sAMAccountName": "Event Log Readers",
+        "member": [],
+        "memberOf": [],
+        "name": "Event Log Readers"
+    },
+    {
+        "distinguishedName": "CN=Certificate Service DCOM Access,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{49120841-ba3e-4343-ab3e-29c9a4f1cda9}",
+        "objectSid": "S-1-5-32-574",
+        "sAMAccountName": "Certificate Service DCOM Access",
+        "member": [],
+        "memberOf": [],
+        "name": "Certificate Service DCOM Access"
+    },
+    {
+        "distinguishedName": "CN=RDS Remote Access Servers,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{0164dd46-f5e8-4a1a-ad2d-639965770f35}",
+        "objectSid": "S-1-5-32-575",
+        "sAMAccountName": "RDS Remote Access Servers",
+        "member": [],
+        "memberOf": [],
+        "name": "RDS Remote Access Servers"
+    },
+    {
+        "distinguishedName": "CN=RDS Endpoint Servers,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{344ffb94-ebdb-42d1-8fc8-e209baeaf29a}",
+        "objectSid": "S-1-5-32-576",
+        "sAMAccountName": "RDS Endpoint Servers",
+        "member": [],
+        "memberOf": [],
+        "name": "RDS Endpoint Servers"
+    },
+    {
+        "distinguishedName": "CN=RDS Management Servers,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{3deb3a6a-3d5f-4fa0-8ad6-6d88eac77f5c}",
+        "objectSid": "S-1-5-32-577",
+        "sAMAccountName": "RDS Management Servers",
+        "member": [],
+        "memberOf": [],
+        "name": "RDS Management Servers"
+    },
+    {
+        "distinguishedName": "CN=Hyper-V Administrators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{229c2664-02a8-4314-8a73-8f082ea3c554}",
+        "objectSid": "S-1-5-32-578",
+        "sAMAccountName": "Hyper-V Administrators",
+        "member": [],
+        "memberOf": [],
+        "name": "Hyper-V Administrators"
+    },
+    {
+        "distinguishedName": "CN=Access Control Assistance Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{700356b0-1c93-4121-a728-8ff965caf928}",
+        "objectSid": "S-1-5-32-579",
+        "sAMAccountName": "Access Control Assistance Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Access Control Assistance Operators"
+    },
+    {
+        "distinguishedName": "CN=Remote Management Users,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{b18f824a-b95c-41c9-90ef-d47700feeac2}",
+        "objectSid": "S-1-5-32-580",
+        "sAMAccountName": "Remote Management Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Remote Management Users"
+    },
+    {
+        "distinguishedName": "CN=Storage Replica Administrators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{62059637-f293-4a5d-99e0-3ef7419ec8fa}",
+        "objectSid": "S-1-5-32-582",
+        "sAMAccountName": "Storage Replica Administrators",
+        "member": [],
+        "memberOf": [],
+        "name": "Storage Replica Administrators"
+    },
+    {
+        "distinguishedName": "CN=Domain Computers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{043df3d2-9e8f-4ae2-8e85-a6f485c505f6}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-515",
+        "sAMAccountName": "Domain Computers",
+        "member": [],
+        "memberOf": [],
+        "name": "Domain Computers"
+    },
+    {
+        "distinguishedName": "CN=Domain Controllers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{9889f763-248d-411b-a33c-955ba5b35252}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-516",
+        "sAMAccountName": "Domain Controllers",
+        "member": [],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "Domain Controllers"
+    },
+    {
+        "distinguishedName": "CN=Schema Admins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{7b364f7d-bcfc-47cd-92bf-c3b44b738acb}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-518",
+        "sAMAccountName": "Schema Admins",
+        "member": [
+            "CN=Administrator,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "Schema Admins"
+    },
+    {
+        "distinguishedName": "CN=Enterprise Admins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{b24b22b3-8070-48c1-b218-6742e73259e6}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-519",
+        "sAMAccountName": "Enterprise Admins",
+        "member": [
+            "CN=Administrator,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local",
+            "CN=Administrators,CN=Builtin,DC=lab,DC=local"
+        ],
+        "name": "Enterprise Admins"
+    },
+    {
+        "distinguishedName": "CN=Cert Publishers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{ca698184-60f2-40e6-b326-98746aae3ec7}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-517",
+        "sAMAccountName": "Cert Publishers",
+        "member": [],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "Cert Publishers"
+    },
+    {
+        "distinguishedName": "CN=Domain Admins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{7248ffc6-d0b4-4b17-b001-628f29d76971}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-512",
+        "sAMAccountName": "Domain Admins",
+        "member": [
+            "CN=Administrateur,CN=Users,DC=lab,DC=local",
+            "CN=Administrator,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local",
+            "CN=Administrators,CN=Builtin,DC=lab,DC=local"
+        ],
+        "name": "Domain Admins"
+    },
+    {
+        "distinguishedName": "CN=Domain Users,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{69ddab4e-5b01-4ce3-bce5-ce9a63b6137b}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-513",
+        "sAMAccountName": "Domain Users",
+        "member": [],
+        "memberOf": [
+            "CN=Users,CN=Builtin,DC=lab,DC=local"
+        ],
+        "name": "Domain Users"
+    },
+    {
+        "distinguishedName": "CN=Domain Guests,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{e7bf071f-21a4-4f17-a203-e5ba808d00c1}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-514",
+        "sAMAccountName": "Domain Guests",
+        "member": [],
+        "memberOf": [
+            "CN=Guests,CN=Builtin,DC=lab,DC=local"
+        ],
+        "name": "Domain Guests"
+    },
+    {
+        "distinguishedName": "CN=Group Policy Creator Owners,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{7dfc8cd5-cd21-4a36-874d-0c22a181a063}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-520",
+        "sAMAccountName": "Group Policy Creator Owners",
+        "member": [
+            "CN=Administrator,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "Group Policy Creator Owners"
+    },
+    {
+        "distinguishedName": "CN=RAS and IAS Servers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{a2d07346-e0aa-4569-8ba7-62060e1a31d8}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-553",
+        "sAMAccountName": "RAS and IAS Servers",
+        "member": [],
+        "memberOf": [],
+        "name": "RAS and IAS Servers"
+    },
+    {
+        "distinguishedName": "CN=Server Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{dd7a5e7d-992b-48c4-bf84-54b83365f200}",
+        "objectSid": "S-1-5-32-549",
+        "sAMAccountName": "Server Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Server Operators"
+    },
+    {
+        "distinguishedName": "CN=Account Operators,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{63115afa-f66f-47a0-8d4e-e7e652b65547}",
+        "objectSid": "S-1-5-32-548",
+        "sAMAccountName": "Account Operators",
+        "member": [],
+        "memberOf": [],
+        "name": "Account Operators"
+    },
+    {
+        "distinguishedName": "CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{a65acb7b-3c66-4c29-9f93-c668b615d43a}",
+        "objectSid": "S-1-5-32-554",
+        "sAMAccountName": "Pre-Windows 2000 Compatible Access",
+        "member": [
+            "CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Pre-Windows 2000 Compatible Access"
+    },
+    {
+        "distinguishedName": "CN=Incoming Forest Trust Builders,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{354e1172-a7c0-4314-839e-6b365818fff1}",
+        "objectSid": "S-1-5-32-557",
+        "sAMAccountName": "Incoming Forest Trust Builders",
+        "member": [],
+        "memberOf": [],
+        "name": "Incoming Forest Trust Builders"
+    },
+    {
+        "distinguishedName": "CN=Windows Authorization Access Group,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{4fd1acc7-e7fc-4fff-a15a-f6ff57b77298}",
+        "objectSid": "S-1-5-32-560",
+        "sAMAccountName": "Windows Authorization Access Group",
+        "member": [
+            "CN=S-1-5-9,CN=ForeignSecurityPrincipals,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Windows Authorization Access Group"
+    },
+    {
+        "distinguishedName": "CN=Terminal Server License Servers,CN=Builtin,DC=lab,DC=local",
+        "objectGUID": "{6e0e27f3-4e35-4d08-bba0-7d2b339ff046}",
+        "objectSid": "S-1-5-32-561",
+        "sAMAccountName": "Terminal Server License Servers",
+        "member": [],
+        "memberOf": [],
+        "name": "Terminal Server License Servers"
+    },
+    {
+        "distinguishedName": "CN=Allowed RODC Password Replication Group,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{74eac1f7-a126-4fcd-b2f0-416825f6dcad}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-571",
+        "sAMAccountName": "Allowed RODC Password Replication Group",
+        "member": [],
+        "memberOf": [],
+        "name": "Allowed RODC Password Replication Group"
+    },
+    {
+        "distinguishedName": "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{9b0231db-4bce-475d-8556-6ca57bbf544a}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-572",
+        "sAMAccountName": "Denied RODC Password Replication Group",
+        "member": [
+            "CN=Read-only Domain Controllers,CN=Users,DC=lab,DC=local",
+            "CN=Group Policy Creator Owners,CN=Users,DC=lab,DC=local",
+            "CN=Domain Admins,CN=Users,DC=lab,DC=local",
+            "CN=Cert Publishers,CN=Users,DC=lab,DC=local",
+            "CN=Enterprise Admins,CN=Users,DC=lab,DC=local",
+            "CN=Schema Admins,CN=Users,DC=lab,DC=local",
+            "CN=Domain Controllers,CN=Users,DC=lab,DC=local",
+            "CN=krbtgt,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "Denied RODC Password Replication Group"
+    },
+    {
+        "distinguishedName": "CN=Read-only Domain Controllers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{fee3b8d4-d38c-48ba-9869-85e200581875}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-521",
+        "sAMAccountName": "Read-only Domain Controllers",
+        "member": [],
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "Read-only Domain Controllers"
+    },
+    {
+        "distinguishedName": "CN=Enterprise Read-only Domain Controllers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{8f9e63eb-b33f-4140-97bb-11de6dfa22ec}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-498",
+        "sAMAccountName": "Enterprise Read-only Domain Controllers",
+        "member": [],
+        "memberOf": [],
+        "name": "Enterprise Read-only Domain Controllers"
+    },
+    {
+        "distinguishedName": "CN=Cloneable Domain Controllers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{07aaac30-16e4-408e-acf2-8c3c60e2e693}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-522",
+        "sAMAccountName": "Cloneable Domain Controllers",
+        "member": [],
+        "memberOf": [],
+        "name": "Cloneable Domain Controllers"
+    },
+    {
+        "distinguishedName": "CN=Protected Users,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{a48e83b5-e613-417c-b441-d69378911aca}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-525",
+        "sAMAccountName": "Protected Users",
+        "member": [],
+        "memberOf": [],
+        "name": "Protected Users"
+    },
+    {
+        "distinguishedName": "CN=Key Admins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{f4bb4c3b-77f9-40a4-aef2-07e9101639d4}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-526",
+        "sAMAccountName": "Key Admins",
+        "member": [],
+        "memberOf": [],
+        "name": "Key Admins"
+    },
+    {
+        "distinguishedName": "CN=Enterprise Key Admins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{f3415047-2566-4ac3-9f46-a25b19411aac}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-527",
+        "sAMAccountName": "Enterprise Key Admins",
+        "member": [],
+        "memberOf": [],
+        "name": "Enterprise Key Admins"
+    },
+    {
+        "distinguishedName": "CN=DnsAdmins,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{2811b450-b5d7-40b6-8e31-f716b3f56bbd}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1103",
+        "sAMAccountName": "DnsAdmins",
+        "member": [],
+        "memberOf": [],
+        "name": "DnsAdmins"
+    },
+    {
+        "distinguishedName": "CN=DnsUpdateProxy,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{0703cb2c-1e1b-4d81-9c86-8c0efd58f415}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1104",
+        "sAMAccountName": "DnsUpdateProxy",
+        "member": [],
+        "memberOf": [],
+        "name": "DnsUpdateProxy"
+    },
+    {
+        "distinguishedName": "CN=gAllUsers,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{a87938a0-be5d-4aa4-9b9a-258b8175c7d8}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1121",
+        "sAMAccountName": "gAllUsers",
+        "member": [
+            "CN=userGhr,CN=Users,DC=lab,DC=local",
+            "CN=ugSci,CN=Users,DC=lab,DC=local",
+            "CN=u8,CN=Users,DC=lab,DC=local",
+            "CN=u7,CN=Users,DC=lab,DC=local",
+            "CN=u6,CN=Users,DC=lab,DC=local",
+            "CN=u5,CN=Users,DC=lab,DC=local",
+            "CN=u44,CN=Users,DC=lab,DC=local",
+            "CN=u4,CN=Users,DC=lab,DC=local",
+            "CN=u34,CN=Users,DC=lab,DC=local",
+            "CN=u3,CN=Users,DC=lab,DC=local",
+            "CN=u24,CN=Users,DC=lab,DC=local",
+            "CN=u2,CN=Users,DC=lab,DC=local",
+            "CN=u14,CN=Users,DC=lab,DC=local",
+            "CN=u1,CN=Users,DC=lab,DC=local",
+            "CN=u04,CN=Users,DC=lab,DC=local",
+            "CN=u0,CN=Users,DC=lab,DC=local",
+            "CN=User,CN=Users,DC=lab,DC=local",
+            "CN=Administrateur,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "gAllUsers"
+    },
+    {
+        "distinguishedName": "CN=gEmpty,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{6f52600f-7e64-4df3-93a8-d45b486e373d}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1122",
+        "sAMAccountName": "gEmpty",
+        "member": [],
+        "memberOf": [],
+        "name": "gEmpty"
+    },
+    {
+        "distinguishedName": "CN=gHelloWorld,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{07192605-887e-4412-ab3a-518d7d5f42f1}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1123",
+        "sAMAccountName": "gHelloWorld",
+        "member": [],
+        "memberOf": [],
+        "name": "gHelloWorld"
+    },
+    {
+        "distinguishedName": "CN=gHr,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{46e676ad-bbdd-43a2-ba74-9502a485baf4}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1124",
+        "sAMAccountName": "gHr",
+        "member": [
+            "CN=gSci,CN=Users,DC=lab,DC=local",
+            "CN=userGhr,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [],
+        "name": "gHr"
+    },
+    {
+        "distinguishedName": "CN=gSci,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{3b917f29-e52a-4337-a300-a549d5578784}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1125",
+        "sAMAccountName": "gSci",
+        "member": [
+            "CN=ugSci,CN=Users,DC=lab,DC=local",
+            "CN=u7,CN=Users,DC=lab,DC=local",
+            "CN=u1,CN=Users,DC=lab,DC=local"
+        ],
+        "memberOf": [
+            "CN=gHr,CN=Users,DC=lab,DC=local"
+        ],
+        "name": "gSci"
+    }
+]

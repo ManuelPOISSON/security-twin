@@ -1,0 +1,89 @@
+{
+    "owner": {
+        "domain": "BUILTIN",
+        "name": "Administrators",
+        "sid": "S-1-5-32-544"
+    },
+    "group": {
+        "domain": "BUILTIN",
+        "name": "Administrators",
+        "sid": "S-1-5-32-544"
+    },
+    "dacl": [
+        {
+            "access_mask": 35,
+            "trustee": {
+                "domain": "LAB",
+                "name": "u1",
+                "sid": "S-1-5-21-71392453-556117582-2572091979-1107"
+            },
+            "inherited": false,
+            "permissions": [
+                "Enable",
+                "MethodExecute",
+                "RemoteAccess"
+            ]
+        },
+        {
+            "access_mask": 393279,
+            "trustee": {
+                "domain": "BUILTIN",
+                "name": "Administrators",
+                "sid": "S-1-5-32-544"
+            },
+            "inherited": true,
+            "permissions": [
+                "Enable",
+                "MethodExecute",
+                "FullWrite",
+                "PartialWrite",
+                "ProviderWrite",
+                "RemoteAccess",
+                "ReadSecurity",
+                "WriteSecurity"
+            ]
+        },
+        {
+            "access_mask": 19,
+            "trustee": {
+                "domain": "NT AUTHORITY",
+                "name": "NETWORK SERVICE",
+                "sid": "S-1-5-20"
+            },
+            "inherited": true,
+            "permissions": [
+                "Enable",
+                "MethodExecute",
+                "ProviderWrite"
+            ]
+        },
+        {
+            "access_mask": 19,
+            "trustee": {
+                "domain": "NT AUTHORITY",
+                "name": "LOCAL SERVICE",
+                "sid": "S-1-5-19"
+            },
+            "inherited": true,
+            "permissions": [
+                "Enable",
+                "MethodExecute",
+                "ProviderWrite"
+            ]
+        },
+        {
+            "access_mask": 19,
+            "trustee": {
+                "domain": "NT AUTHORITY",
+                "name": "Authenticated Users",
+                "sid": "S-1-5-11"
+            },
+            "inherited": true,
+            "permissions": [
+                "Enable",
+                "MethodExecute",
+                "ProviderWrite"
+            ]
+        }
+    ]
+}

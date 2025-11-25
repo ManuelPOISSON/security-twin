@@ -1,0 +1,8 @@
+[
+    {
+        "distinguishedName": "OU=Domain Controllers,DC=lab,DC=local",
+        "objectGUID": "{329f585e-e16a-43e1-85bd-a99407864014}",
+        "gPLink": "[LDAP://CN={6AC1786C-016F-11D2-945F-00C04fB984F9},CN=Policies,CN=System,DC=lab,DC=local;0]",
+        "ou": "Domain Controllers"
+    }
+]

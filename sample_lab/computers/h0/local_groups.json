@@ -1,0 +1,151 @@
+[
+    {
+        "sid": "S-1-5-32-579",
+        "name": "Access Control Assistance Operators",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-544",
+        "name": "Administrators",
+        "members": [
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-1000",
+                "name": "DESKTOP-HGD6MA0\\Administrateur"
+            },
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-500",
+                "name": "DESKTOP-HGD6MA0\\Administrator"
+            },
+            {
+                "sid": "S-1-5-21-71392453-556117582-2572091979-512",
+                "name": "LAB\\Domain Admins"
+            }
+        ]
+    },
+    {
+        "sid": "S-1-5-32-551",
+        "name": "Backup Operators",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-569",
+        "name": "Cryptographic Operators",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-583",
+        "name": "Device Owners",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-562",
+        "name": "Distributed COM Users",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-573",
+        "name": "Event Log Readers",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-546",
+        "name": "Guests",
+        "members": [
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-501",
+                "name": "DESKTOP-HGD6MA0\\Guest"
+            }
+        ]
+    },
+    {
+        "sid": "S-1-5-32-578",
+        "name": "Hyper-V Administrators",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-568",
+        "name": "IIS_IUSRS",
+        "members": [
+            {
+                "sid": "S-1-5-17",
+                "name": "NT AUTHORITY\\IUSR"
+            }
+        ]
+    },
+    {
+        "sid": "S-1-5-32-556",
+        "name": "Network Configuration Operators",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-559",
+        "name": "Performance Log Users",
+        "members": [
+            {
+                "sid": "S-1-5-21-71392453-556117582-2572091979-1107",
+                "name": "LAB\\u1"
+            }
+        ]
+    },
+    {
+        "sid": "S-1-5-32-558",
+        "name": "Performance Monitor Users",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-547",
+        "name": "Power Users",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-555",
+        "name": "Remote Desktop Users",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-580",
+        "name": "Remote Management Users",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-552",
+        "name": "Replicator",
+        "members": []
+    },
+    {
+        "sid": "S-1-5-32-581",
+        "name": "System Managed Accounts Group",
+        "members": [
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-503",
+                "name": "DESKTOP-HGD6MA0\\DefaultAccount"
+            }
+        ]
+    },
+    {
+        "sid": "S-1-5-32-545",
+        "name": "Users",
+        "members": [
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-1000",
+                "name": "DESKTOP-HGD6MA0\\Administrateur"
+            },
+            {
+                "sid": "S-1-5-21-2645208504-3545042130-950172851-1001",
+                "name": "DESKTOP-HGD6MA0\\User"
+            },
+            {
+                "sid": "S-1-5-21-71392453-556117582-2572091979-513",
+                "name": "LAB\\Domain Users"
+            },
+            {
+                "sid": "S-1-5-11",
+                "name": "NT AUTHORITY\\Authenticated Users"
+            },
+            {
+                "sid": "S-1-5-4",
+                "name": "NT AUTHORITY\\INTERACTIVE"
+            }
+        ]
+    }
+]

@@ -1,0 +1,126 @@
+[
+    {
+        "name": "Everyone",
+        "sid": "S-1-1-0"
+    },
+    {
+        "name": "LOCAL",
+        "sid": "S-1-2-0"
+    },
+    {
+        "name": "CREATOR OWNER",
+        "sid": "S-1-3-0"
+    },
+    {
+        "name": "CREATOR GROUP",
+        "sid": "S-1-3-1"
+    },
+    {
+        "name": "CREATOR OWNER SERVER",
+        "sid": "S-1-3-2"
+    },
+    {
+        "name": "CREATOR GROUP SERVER",
+        "sid": "S-1-3-3"
+    },
+    {
+        "name": "OWNER RIGHTS",
+        "sid": "S-1-3-4"
+    },
+    {
+        "name": "DIALUP",
+        "sid": "S-1-5-1"
+    },
+    {
+        "name": "NETWORK",
+        "sid": "S-1-5-2"
+    },
+    {
+        "name": "BATCH",
+        "sid": "S-1-5-3"
+    },
+    {
+        "name": "INTERACTIVE",
+        "sid": "S-1-5-4"
+    },
+    {
+        "name": "SERVICE",
+        "sid": "S-1-5-6"
+    },
+    {
+        "name": "ANONYMOUS LOGON",
+        "sid": "S-1-5-7"
+    },
+    {
+        "name": "PROXY",
+        "sid": "S-1-5-8"
+    },
+    {
+        "name": "SYSTEM",
+        "sid": "S-1-5-18"
+    },
+    {
+        "name": "ENTERPRISE DOMAIN CONTROLLERS",
+        "sid": "S-1-5-9"
+    },
+    {
+        "name": "SELF",
+        "sid": "S-1-5-10"
+    },
+    {
+        "name": "Authenticated Users",
+        "sid": "S-1-5-11"
+    },
+    {
+        "name": "RESTRICTED",
+        "sid": "S-1-5-12"
+    },
+    {
+        "name": "TERMINAL SERVER USER",
+        "sid": "S-1-5-13"
+    },
+    {
+        "name": "REMOTE INTERACTIVE LOGON",
+        "sid": "S-1-5-14"
+    },
+    {
+        "name": "IUSR",
+        "sid": "S-1-5-17"
+    },
+    {
+        "name": "LOCAL SERVICE",
+        "sid": "S-1-5-19"
+    },
+    {
+        "name": "NETWORK SERVICE",
+        "sid": "S-1-5-20"
+    },
+    {
+        "name": "Administrateur",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-1000"
+    },
+    {
+        "name": "Administrator",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-500"
+    },
+    {
+        "name": "DefaultAccount",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-503"
+    },
+    {
+        "name": "fake",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-1003"
+    },
+    {
+        "name": "Guest",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-501"
+    },
+    {
+        "name": "User",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-1001"
+    },
+    {
+        "name": "WDAGUtilityAccount",
+        "sid": "S-1-5-21-935957450-2869460536-1856406436-504"
+    }
+]

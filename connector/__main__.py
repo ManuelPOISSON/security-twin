@@ -35,11 +35,11 @@ logger = logging.getLogger(__name__)
 @dataclass
 class Config:
     directory: str
-    host: str
-    database: str
-    username: str
-    password: str
-    port: int
+    host: str = ""
+    database: str = ""
+    username: str = ""
+    password: str = ""
+    port: int = 0
 
 
 def parse_ldap(base_dir: Path) -> dict[str, dict]:
@@ -118,22 +118,28 @@ def populate_domain(db_populate: DBPopulate, model_dto: ModelDTO):
             orm_objects = mapper.to_orm(model_dto)
             uow.session.add_all(orm_objects)
             uow.session.commit()
-
+    print("Success !")
 
 def main(conf: Config) -> int:
     base_dir = Path(conf.directory)
     if not base_dir.exists():
         logger.critical(f"Cannot find directory: {conf.directory} ")
         return -1
-
-    engine_path = (
-        f"mysql+pymysql://{conf.username}:{conf.password}@{conf.host}:{conf.port}/"
-    )
-
-    # Workaround
+    
+     # Workaround
     import model.db
+    import model.db_connect
 
-    model.db.engine_base_path = engine_path
+    if conf.username and conf.database and conf.password:
+        engine_path = (
+            f"mysql+pymysql://{conf.username}:{conf.password}@{conf.host}:{conf.port}/"
+        )
+        model.db.engine_base_path = engine_path
+    else:
+        engine_path = model.db.engine_base_path
+        conf.database = model.db_connect.db_name
+
+
 
     db_populate = DBPopulate(engine_path, conf.database)
     reset_db(conf.database)
@@ -166,11 +172,11 @@ def main(conf: Config) -> int:
 
 def parse_cli() -> Config | None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--directory")
-    parser.add_argument("-i", "--host", required=True)
-    parser.add_argument("-db", "--database", required=True)
-    parser.add_argument("-u", "--username", required=True)
-    parser.add_argument("-p", "--password", required=True)
+    parser.add_argument("-d", "--directory", required=True)
+    parser.add_argument("-i", "--host", required=False)
+    parser.add_argument("-db", "--database", required=False)
+    parser.add_argument("-u", "--username", required=False)
+    parser.add_argument("-p", "--password", required=False)
     parser.add_argument("--port", default=3306)
 
     args = vars(parser.parse_args())

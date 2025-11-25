@@ -131,7 +131,6 @@ class IMapper:
         elif sp := ad_group_repo.get(name=name):
             return sp
 
-        logger.warning(f"Cannot find SP with name '{name}' with machine '{comp_name}'")
         return None
 
 
@@ -382,7 +381,6 @@ class RootCimv2Mapper(IMapper):
         for comp_name, comp_data in data.windows_local_data.items():
             for ace in comp_data.root_cimv2_sd.dacl:
                 machine = repo_machine.get(name=comp_name)
-                print(f"{ace.trustee.name}- {comp_name}")
                 if not machine:
                     logger.warning(f"Machine named {comp_name} does not exist ")
                     continue
@@ -391,10 +389,6 @@ class RootCimv2Mapper(IMapper):
                 )
 
                 if not sp:
-                    logger.warning(
-                        f"Trying to insert security descriptor of namespace rootcimv2 on computer '{comp_name}',"
-                        f"but security principal '{ace.trustee.name}' does not exist !"
-                    )
                     continue
 
                 if isinstance(ace.permissions, list):
@@ -537,9 +531,9 @@ class GPOResultMapper(IMapper):
                     name, comp_name=comp_name
                 )
                 if sp is None:
-                    logger.warning(
+                    """logger.warning(
                         f"Trying to insert GPOResult for non-existing security principal {name}"
-                    )
+                    )"""
 
                 filter_perm = {e.value for e in GPOPolicy}
                 permissions = list(set(user_rights.permissions) & filter_perm)
@@ -685,7 +679,7 @@ class FileRightsMapper(IMapper):
                             sp = repos["adgroup"].get(anme=ace.trustee.name)
 
                     if sp is None:
-                        logger.error(f"Cannot find appropriate SP for ACE: {ace}")
+                        #logger.error(f"Cannot find appropriate SP for ACE: {ace}")
                         continue
 
                     if ace.access_mask == FULL_CONTROL:

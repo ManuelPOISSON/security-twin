@@ -1,0 +1,79 @@
+[
+    {
+        "distinguishedName": "CN=dc0,OU=Domain Controllers,DC=lab,DC=local",
+        "objectGUID": "{bb9f7e72-0198-4ae2-b3f6-c95b6308a086}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1002",
+        "sAMAccountName": "dc0$",
+        "operatingSystem": "Windows Server 2019 Datacenter Evaluation",
+        "primaryGroupID": "516",
+        "operatingSystemVersion": "10.0 (17763)",
+        "name": "dc0",
+        "dNSHostName": "dc0.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h0,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{ada52ba4-65c3-42e7-a229-374c5789c7a6}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1126",
+        "sAMAccountName": "h0$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h0",
+        "dNSHostName": "h0.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h1,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{10845d0d-aca9-44e1-b466-5ab0f9f37fe8}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1127",
+        "sAMAccountName": "h1$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h1",
+        "dNSHostName": "h1.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h2,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{f17e9b01-81eb-4291-a063-7fcdf10ff8ef}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1128",
+        "sAMAccountName": "h2$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h2",
+        "dNSHostName": "h2.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h3,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{7c102080-ca4f-4ccf-b75b-9e08c1378c5c}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1129",
+        "sAMAccountName": "h3$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h3",
+        "dNSHostName": "h3.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h4,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{83d9c125-89d4-423c-b047-c463407a0b3a}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1130",
+        "sAMAccountName": "h4$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h4",
+        "dNSHostName": "h4.lab.local"
+    },
+    {
+        "distinguishedName": "CN=h5,CN=Computers,DC=lab,DC=local",
+        "objectGUID": "{718d39fc-4a4d-4150-939a-fd50289b5a71}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1131",
+        "sAMAccountName": "h5$",
+        "operatingSystem": "Windows 10 Enterprise LTSC",
+        "primaryGroupID": "515",
+        "operatingSystemVersion": "10.0 (19044)",
+        "name": "h5",
+        "dNSHostName": "h5.lab.local"
+    }
+]

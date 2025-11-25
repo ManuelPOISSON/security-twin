@@ -1,0 +1,4 @@
+{
+    "key": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections",
+    "value": "0"
+}

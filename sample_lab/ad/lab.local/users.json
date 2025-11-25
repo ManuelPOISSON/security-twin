@@ -1,0 +1,290 @@
+[
+    {
+        "distinguishedName": "CN=Administrator,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{d6197a04-4057-42ef-87fe-22bc7bc89b32}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-500",
+        "sAMAccountName": "Administrator",
+        "memberOf": [
+            "CN=Group Policy Creator Owners,CN=Users,DC=lab,DC=local",
+            "CN=Domain Admins,CN=Users,DC=lab,DC=local",
+            "CN=Enterprise Admins,CN=Users,DC=lab,DC=local",
+            "CN=Schema Admins,CN=Users,DC=lab,DC=local",
+            "CN=Administrators,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "Administrator"
+    },
+    {
+        "distinguishedName": "CN=Guest,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{93d67331-aa76-4a11-a63d-e01a1b307647}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-501",
+        "sAMAccountName": "Guest",
+        "memberOf": [
+            "CN=Guests,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "Guest"
+    },
+    {
+        "distinguishedName": "CN=Administrateur,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{5c9fb2ec-5c2d-4fe6-a919-3af6f6d2682f}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1000",
+        "sAMAccountName": "Administrateur",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local",
+            "CN=Domain Admins,CN=Users,DC=lab,DC=local",
+            "CN=Users,CN=Builtin,DC=lab,DC=local",
+            "CN=Administrators,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "Administrateur"
+    },
+    {
+        "distinguishedName": "CN=User,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{6accb9f8-37e9-4e49-a103-e4cfd58ff890}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1001",
+        "sAMAccountName": "User",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local",
+            "CN=Users,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "User"
+    },
+    {
+        "distinguishedName": "CN=krbtgt,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{4da2e96b-6b36-4863-a797-185d19482990}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-502",
+        "sAMAccountName": "krbtgt",
+        "memberOf": [
+            "CN=Denied RODC Password Replication Group,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "krbtgt"
+    },
+    {
+        "distinguishedName": "CN=u0,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{0e5e3210-f21b-4ba7-b892-0ffe54b5c9c4}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1105",
+        "sAMAccountName": "u0",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u0"
+    },
+    {
+        "distinguishedName": "CN=u04,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{d18ba2fe-8ec6-485d-b475-9367aaebe8c8}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1106",
+        "sAMAccountName": "u04",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u04"
+    },
+    {
+        "distinguishedName": "CN=u1,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{0c305fad-f7fe-4d6d-93b0-25d9bf6657ea}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1107",
+        "sAMAccountName": "u1",
+        "memberOf": [
+            "CN=gSci,CN=Users,DC=lab,DC=local",
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u1"
+    },
+    {
+        "distinguishedName": "CN=u14,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{16cca3d8-98af-440f-8a54-c0fcfb077b14}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1108",
+        "sAMAccountName": "u14",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u14"
+    },
+    {
+        "distinguishedName": "CN=u2,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{d030ec0f-303e-4d57-a65b-493c91149b0c}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1109",
+        "sAMAccountName": "u2",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u2"
+    },
+    {
+        "distinguishedName": "CN=u24,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{5bffd7d4-7d55-4b4a-97ae-036de00dcb21}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1110",
+        "sAMAccountName": "u24",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u24"
+    },
+    {
+        "distinguishedName": "CN=u3,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{09cf12a2-4d72-4069-b3da-b8023f9fc466}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1111",
+        "sAMAccountName": "u3",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u3"
+    },
+    {
+        "distinguishedName": "CN=u34,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{3276c504-6c89-4d27-aac4-02293be89452}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1112",
+        "sAMAccountName": "u34",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u34"
+    },
+    {
+        "distinguishedName": "CN=u4,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{69c36f04-b292-4f4c-bd5d-b6d9d6c3a953}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1113",
+        "sAMAccountName": "u4",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u4"
+    },
+    {
+        "distinguishedName": "CN=u44,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{e66741d6-16b6-4303-bdae-b8b7c1eb4e7d}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1114",
+        "sAMAccountName": "u44",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u44"
+    },
+    {
+        "distinguishedName": "CN=u5,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{3b40ab73-6593-478b-abf2-e63e1e563bbc}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1115",
+        "sAMAccountName": "u5",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u5"
+    },
+    {
+        "distinguishedName": "CN=u6,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{ccc18760-7d79-40b5-933b-5a1e21fa8b28}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1116",
+        "sAMAccountName": "u6",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u6"
+    },
+    {
+        "distinguishedName": "CN=u7,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{2d0c7983-ba39-462b-af1f-592d897ea13d}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1117",
+        "sAMAccountName": "u7",
+        "memberOf": [
+            "CN=gSci,CN=Users,DC=lab,DC=local",
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u7"
+    },
+    {
+        "distinguishedName": "CN=u8,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{9077dbbc-2426-4913-b977-14d230a683d6}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1118",
+        "sAMAccountName": "u8",
+        "memberOf": [
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "u8"
+    },
+    {
+        "distinguishedName": "CN=ugSci,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{85547234-9e7e-440a-9ad7-a122cc4cf43e}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1119",
+        "sAMAccountName": "ugSci",
+        "memberOf": [
+            "CN=gSci,CN=Users,DC=lab,DC=local",
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "ugSci"
+    },
+    {
+        "distinguishedName": "CN=userGhr,CN=Users,DC=lab,DC=local",
+        "objectGUID": "{11e3eec5-fe96-407d-a569-621c43a995c3}",
+        "objectSid": "S-1-5-21-71392453-556117582-2572091979-1120",
+        "sAMAccountName": "userGhr",
+        "memberOf": [
+            "CN=gHr,CN=Users,DC=lab,DC=local",
+            "CN=gAllUsers,CN=Users,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "userGhr"
+    },
+    {
+        "distinguishedName": "CN=S-1-5-4,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+        "objectGUID": "{4f54fe7c-dc0c-4791-af7a-66ca50ad342b}",
+        "objectSid": "S-1-5-4",
+        "sAMAccountName": "",
+        "memberOf": [
+            "CN=Users,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "S-1-5-4"
+    },
+    {
+        "distinguishedName": "CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+        "objectGUID": "{8e9ad67d-6866-4583-84fe-e72cf3f2f1a5}",
+        "objectSid": "S-1-5-11",
+        "sAMAccountName": "",
+        "memberOf": [
+            "CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=lab,DC=local",
+            "CN=Users,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "S-1-5-11"
+    },
+    {
+        "distinguishedName": "CN=S-1-5-17,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+        "objectGUID": "{3d679a38-2278-4e14-9089-6377bec83747}",
+        "objectSid": "S-1-5-17",
+        "sAMAccountName": "",
+        "memberOf": [
+            "CN=IIS_IUSRS,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "S-1-5-17"
+    },
+    {
+        "distinguishedName": "CN=S-1-5-9,CN=ForeignSecurityPrincipals,DC=lab,DC=local",
+        "objectGUID": "{75255068-0491-4936-92e0-5e43e4525920}",
+        "objectSid": "S-1-5-9",
+        "sAMAccountName": "",
+        "memberOf": [
+            "CN=Windows Authorization Access Group,CN=Builtin,DC=lab,DC=local"
+        ],
+        "userWorkstations": [],
+        "name": "S-1-5-9"
+    }
+]

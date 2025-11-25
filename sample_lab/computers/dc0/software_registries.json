@@ -1,0 +1,10 @@
+[
+    {
+        "registry": "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*",
+        "softwares": []
+    },
+    {
+        "registry": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*",
+        "softwares": []
+    }
+]

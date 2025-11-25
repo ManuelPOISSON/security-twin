@@ -24,8 +24,10 @@ Follow basic usage or advanced usage
 
 ## Basic usage
 
-Each step gives you 2 options.
-Either use the **ready to use input file** (option A), or generate the input file yourself (option B).
+You can either collect the data yourself or skip directly to populating the data model.
+
+- If you want to **collect data**, see [Step 1](#1--data-collection-on-the-is_lab).
+- If you prefer to **skip data collection**, go to [Step 2](#2--populate-the-data-model).
 
 ### 0- install prerequisites and setup the database.
 
@@ -33,134 +35,144 @@ See [Prerequisites](#prerequisites)
 
 ### 1- Data collection on the IS_LAB
 
- - **Option A**
-nothing to do
+Collecting data from the Active Directory domain:
 
-- **Option B**
-run the command to produce a file `data-ISLAB`.
 ```bash
-# TODO
+python3 collector.py --output-directory collect --domain lab.local -dc-ip <TODO_UPDATE> -u "Administrateur@lab.local" -p "234P@ss"
 ```
 the command uses our data collector to query ISLAB, an example information system made of 8 VMs configured as described in the paper.
 
 
-### 2- Populate the data model
-
-- **Option A** In bellow commands, use, as last argument, `data/lab_surprise.py` 
-- **Option B** In bellow commands, use, as last argument, the path to the directory generated at step 1
+Collecting data from a Linux server:
 
 ```bash
-python -m model.fill_db reset "data/lab_surprise.py"
+python3 collector.py --output-directory collect --hostname <TODO_UPDATE> -u root --key-path <TODO_UPDATE_RSA>
 ```
 
-Output ends with `Database 'model' successfully filled with data from data/lab_surprise.py`
+To see more details see [Readme](collector_agent/README.md).
+### 2- Populate the data model
+
+To populate the database with the collected data, run the following command:
+
+```bash
+python3 -m connector --directory sample_lab
+```
+
+If the operation is successful, you should see an output similar to:
+
+```text
+reseting db model in  ['information_schema', 'model', 'mysql', 'performance_schema', 'sys', 'test']
+Success !
+```
 
 ### 3- Build the attack position graph
 
-- **Option A**
-nothing to do, a graph is already build and ready to use
+Once the database is populated, you can generate an attack position graph by running:
 
-- **Option B**
+```bash
+python3 -m attack_graph b --graph-path MyGraph
 ```
-python -m attack_graph b --graph-path data/graph/myGraph
-```
-Output displays general statistics about the graph
+
+The output will display general statistics about the generated graph:
+
 ```text
-Graph 'myGraph' has 400 nodes and 15317 edges
+Graph 'MyGraph' has 401 nodes and 15384 edges
 Edge labels count:
   CVE_2020_1472_zerologon: 9700
   CVE_2021_44228_log4j: 2328
+  RDP: 36
+  wmic: 90
+  PSRemote: 114
   CVE_2023_38831_winrar: 3080
-  RDP: 30
-  wmic: 72
-  PSRemote: 72
-  ServiceExeModify: 35
+  ServiceExeModify: 36
 ```
 
 
 ### 4- Analyze paths in the attack position graph
 
-- **Option A** In bellow commands, argument `--graph-path` takes `data/graph/ISLAB` 
-- **Option B** In bellow commands, argument `--graph-path` takes the same value as the one used in step 3 (`data/graph/myGraph` in the example) 
 
-Search attack path in the graph starting from `c0 u0` (attack position with user `u0` on host `h0`)
+Search attack path in the graph starting from `h0 u0` (attack position with user `u0` on host `h0`)
 
 ```bash
-python -m attack_graph l --graph-path data/graph/ISLAB human c0 u0
+python -m attack_graph l --graph-path myGraph human c0 u0
 ```
 Output all path found. 
 ```text
 ...
-[21] path length 3, dst: (c3,u1@lab.local)
-        (c0,u0@lab.local) PSRemote
-        (c3,u0@lab.local) CVE_2023_38831_winrar
-        (c3,u1@lab.local) 
+[360] path length 5, dst: (h0,NT Authority@h0)
+        (dc0,u04@lab.local) CVE_2020_1472_zerologon
+        (dc0,Administrateur@lab.local) wmic
+        (h0,Administrateur@lab.local) ServiceExeModify
+        (h0,Local System@h0) ServiceExeModify
+        (h0,NT Authority@h0) 
 
-[22] path length 4, dst: (c2,u1@lab.local)
-        (c0,u0@lab.local) RDP
-        (c1,u0@lab.local) runas
-        (c1,u1@lab.local) wmic
-        (c2,u1@lab.local) 
+[361] path length 5, dst: (h0,NT Authority@h0)
+        (dc0,u04@lab.local) CVE_2020_1472_zerologon
+        (dc0,Administrateur@lab.local) PSRemote
+        (h0,Administrateur@lab.local) ServiceExeModify
+        (h0,Local System@h0) ServiceExeModify
+        (h0,NT Authority@h0) 
 
-[23] path length 4, dst: (c1,u7@lab.local)
-        (c0,u0@lab.local) PSRemote
-        (c3,u0@lab.local) CVE_2023_38831_winrar
-        (c3,u7@lab.local) RDP
-        (c1,u7@lab.local) 
-...
-[25] path length 5, dst: (c2,SYSTEM@c2)
-        (c0,u0@lab.local) RDP
-        (c1,u0@lab.local) runas
-        (c1,u1@lab.local) wmic
-        (c2,u1@lab.local) ServiceExeModify
-        (c2,SYSTEM@c2) 
+[362] path length 5, dst: (h5,NT Authority@h5)
+        (dc0,u04@lab.local) CVE_2020_1472_zerologon
+        (dc0,Administrateur@lab.local) wmic
+        (h5,Administrateur@lab.local) ServiceExeModify
+        (h5,Local System@h5) ServiceExeModify
+        (h5,NT Authority@h5) 
 
-[26] path length 1, dst: (c0,u04@lab.local)
-        (c0,u04@lab.local) 
+[363] path length 5, dst: (h5,NT Authority@h5)
+        (dc0,u04@lab.local) CVE_2020_1472_zerologon
+        (dc0,Administrateur@lab.local) wmic
+        (h5,Administrateur@lab.local) ServiceExeModify
+        (h5,Local System@h5) ServiceExeModify
+        (h5,NT Authority@h5) 
 
-[27] path length 2, dst: (DC0,Administrateur@lab.local)
-        (c0,u04@lab.local) CVE_2020_1472_zerologon
-        (DC0,Administrateur@lab.local) 
+[364] path length 5, dst: (h5,NT Authority@h5)
+        (dc0,u04@lab.local) CVE_2020_1472_zerologon
+        (dc0,Administrateur@lab.local) PSRemote
+        (h5,Administrateur@lab.local) ServiceExeModify
+        (h5,Local System@h5) ServiceExeModify
+        (h5,NT Authority@h5) 
 
-all 28 path(s) displayed
+all 365 path(s) displayed
 ```
+
 Prompt user to choose which path to analyse. 
+
 ```text
-choose which path to reproduce (0 - 27): 23
+choose which path to reproduce (0 - 364): 363
 ```
+
 Display security characteristics related to this path.
 ```text
-- c3 has_psRemote
-- machine c3 localgroup Remote Management Users member: u0@lab.local
-- machine c3 has installed winrar with version 6.22, CVE_2023_38831
-- usr_src can write any .rar file in C:\Users\Public\Documents and user_dst can read it
-- machine c1 is not DC
-- machine c1 localgroup Remote Desktop Users member: u7@lab.local
-- machine c1, GPO SeRemoteInteractiveLogonRight is undefined
-- machine c1, GPO SeDenyRemoteInteractiveLogonRight is undefined
-- machine c1 has RDP enabled
-- machine c0, GPO SeDenyInteractiveLogonRight is undefined
-- u0 and c0 in same ad domain
-- machine c0, GPO SeInteractiveLogonRight is undefined
-- machine c3, GPO SeInteractiveLogonRight is undefined
-- u0 and c3 in same ad domain
-- machine c3, GPO SeDenyInteractiveLogonRight is undefined
-- u7 and c3 in same ad domain
-- machine c3, GPO SeInteractiveLogonRight is undefined
-- machine c3, GPO SeDenyInteractiveLogonRight is undefined
-- machine c1, GPO SeRemoteInteractiveLogonRight is undefined
-- machine c1, GPO SeDenyInteractiveLogonRight is undefined
-- machine c1, GPO SeDenyRemoteInteractiveLogonRight is undefined
-- u7 and c1 in same ad domain
-- machine c1 localgroup Remote Desktop Users member: u7@lab.local
-- machine c1, GPO SeInteractiveLogonRight is undefined
-- machine c1 has RDP enabled
-- machine c1 is not DC
+- dc0 is a DC in AD domain lab.local with version Windows Server 2019 Datacenter Evaluation  10.0 (17763), CVE zerologon
+- User Administrateur@lab.local in AD domain lab.local
+- machine h5 localgroup Performance Log Users member: Administrateur@lab.local
+- machine h5: rootcimv2rights ('Administrateur@lab.local', 'Enable,MethodExecute,FullWrite,PartialWrite,ProviderWrite,RemoteAccess,ReadSecurity,WriteSecurity')
+- machine h5: service MicrosoftEdgeElevationService-1 executed by Local System@h5 executes file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
+- machine h5: Administrateur@lab.local has rights FullControl on file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
+- machine h5: service WdNisSvc-1 executed by NT Authority@h5 executes file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
+- machine h5: Local System@h5 has rights FullControl on file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
+- u04 and dc0 in same ad domain
+- machine dc0, GPO SeDenyInteractiveLogonRight is undefined
+- machine dc0, GPO SeInteractiveLogonRight is undefined
+- Administrateur and dc0 in same ad domain
+- machine dc0, GPO SeDenyInteractiveLogonRight is undefined
+- machine dc0, GPO SeInteractiveLogonRight is undefined
+- machine h5, GPO SeDenyInteractiveLogonRight is undefined
+- Administrateur and h5 in same ad domain
+- machine h5, GPO SeInteractiveLogonRight is undefined
+- Local System local user of h5
+- machine h5, GPO SeDenyInteractiveLogonRight is undefined
+- machine h5, GPO SeInteractiveLogonRight is undefined
+- NT Authority local user of h5
+- machine h5, GPO SeDenyInteractiveLogonRight is undefined
+- machine h5, GPO SeInteractiveLogonRight is undefined
 ```
 
 You can also search all path between 2 vertices
 ```bash
-python -m attack_graph l --graph-path data/graph/myGraph human c0 u0 c2 SYSTEM
+python -m attack_graph l --graph-path MyGraph human h0 u0 h2 "Local System"
 ```
 
 ### 5 Visualize graph in GUI using Gephi
@@ -169,8 +181,9 @@ python -m attack_graph l --graph-path data/graph/myGraph human c0 u0 c2 SYSTEM
 - **Option B** In bellow commands, argument `--graph-path` takes the same value as the one used in step 3 (`data/graph/myGraph` in the example) 
 
 ```bash
-python -m attack_graph l --graph-path data/graph/myGraph gui
+python -m attack_graph l --graph-path MyGraph gui
 ```
+
 Output `gephi graph saved in myGraph.gexf`, then open the generated file with gephi
 
 ----
