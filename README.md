@@ -67,10 +67,12 @@ Success !
 
 ### 3- Build the attack position graph
 
+**This step is optional**, an example attack graph is ready to use (file ` data/graph/ISLAB`)
+
 Once the database is populated, you can generate an attack position graph by running:
 
 ```bash
-python3 -m attack_graph b --graph-path MyGraph
+python3 -m attack_graph --graph-path MyGraph b
 ```
 
 The output will display general statistics about the generated graph:
@@ -94,97 +96,94 @@ Edge labels count:
 Search attack path in the graph starting from `h0 u0` (attack position with user `u0` on host `h0`)
 
 ```bash
-python -m attack_graph l --graph-path myGraph human c0 u0
+python -m attack_graph --graph-path data/graph/ISLAB l human h0 u0 
 ```
 Output all path found. 
 ```text
 ...
-[360] path length 5, dst: (h0,NT Authority@h0)
-        (dc0,u04@lab.local) CVE_2020_1472_zerologon
-        (dc0,Administrateur@lab.local) wmic
-        (h0,Administrateur@lab.local) ServiceExeModify
-        (h0,Local System@h0) ServiceExeModify
-        (h0,NT Authority@h0) 
-
-[361] path length 5, dst: (h0,NT Authority@h0)
-        (dc0,u04@lab.local) CVE_2020_1472_zerologon
-        (dc0,Administrateur@lab.local) PSRemote
-        (h0,Administrateur@lab.local) ServiceExeModify
-        (h0,Local System@h0) ServiceExeModify
-        (h0,NT Authority@h0) 
-
-[362] path length 5, dst: (h5,NT Authority@h5)
-        (dc0,u04@lab.local) CVE_2020_1472_zerologon
-        (dc0,Administrateur@lab.local) wmic
-        (h5,Administrateur@lab.local) ServiceExeModify
-        (h5,Local System@h5) ServiceExeModify
-        (h5,NT Authority@h5) 
-
-[363] path length 5, dst: (h5,NT Authority@h5)
-        (dc0,u04@lab.local) CVE_2020_1472_zerologon
-        (dc0,Administrateur@lab.local) wmic
-        (h5,Administrateur@lab.local) ServiceExeModify
-        (h5,Local System@h5) ServiceExeModify
-        (h5,NT Authority@h5) 
+[363] path length 5, dst: (h4,NT Authority@h4)
+	(h0,u04@lab.local) CVE_2020_1472_zerologon
+	(dc0,Administrateur@lab.local) PSRemote
+	(h4,Administrateur@lab.local) ServiceExeModify
+	(h4,Local System@h4) ServiceExeModify
+	(h4,NT Authority@h4) 
 
 [364] path length 5, dst: (h5,NT Authority@h5)
-        (dc0,u04@lab.local) CVE_2020_1472_zerologon
-        (dc0,Administrateur@lab.local) PSRemote
-        (h5,Administrateur@lab.local) ServiceExeModify
-        (h5,Local System@h5) ServiceExeModify
-        (h5,NT Authority@h5) 
+	(h0,u04@lab.local) CVE_2020_1472_zerologon
+	(dc0,Administrateur@lab.local) wmic
+	(h5,Administrateur@lab.local) ServiceExeModify
+	(h5,Local System@h5) ServiceExeModify
+	(h5,NT Authority@h5) 
 
-all 365 path(s) displayed
+[365] path length 5, dst: (h5,NT Authority@h5)
+	(h0,u04@lab.local) CVE_2020_1472_zerologon
+	(dc0,Administrateur@lab.local) wmic
+	(h5,Administrateur@lab.local) ServiceExeModify
+	(h5,Local System@h5) ServiceExeModify
+	(h5,NT Authority@h5) 
+
+[366] path length 5, dst: (h5,NT Authority@h5)
+	(h0,u04@lab.local) CVE_2020_1472_zerologon
+	(dc0,Administrateur@lab.local) PSRemote
+	(h5,Administrateur@lab.local) ServiceExeModify
+	(h5,Local System@h5) ServiceExeModify
+	(h5,NT Authority@h5) 
+
+all 367 path(s) displayed
+choose which path to reproduce (0 - 366):
 ```
 
 Prompt user to choose which path to analyse. 
 
 ```text
-choose which path to reproduce (0 - 364): 363
+choose which path to reproduce (0 - 366): 363
 ```
 
 Display security characteristics related to this path.
 ```text
 - dc0 is a DC in AD domain lab.local with version Windows Server 2019 Datacenter Evaluation  10.0 (17763), CVE zerologon
 - User Administrateur@lab.local in AD domain lab.local
-- machine h5 localgroup Performance Log Users member: Administrateur@lab.local
-- machine h5: rootcimv2rights ('Administrateur@lab.local', 'Enable,MethodExecute,FullWrite,PartialWrite,ProviderWrite,RemoteAccess,ReadSecurity,WriteSecurity')
-- machine h5: service MicrosoftEdgeElevationService-1 executed by Local System@h5 executes file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
-- machine h5: Administrateur@lab.local has rights FullControl on file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
-- machine h5: service WdNisSvc-1 executed by NT Authority@h5 executes file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
-- machine h5: Local System@h5 has rights FullControl on file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
-- u04 and dc0 in same ad domain
-- machine dc0, GPO SeDenyInteractiveLogonRight is undefined
-- machine dc0, GPO SeInteractiveLogonRight is undefined
+- h4 has_psRemote
+- machine h4 localgroup Administrators member: Administrateur@lab.local
+- machine h4: service MicrosoftEdgeElevationService-1 executed by Local System@h4 executes file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
+- machine h4: Administrateur@lab.local has rights FullControl on file at C:\Program Files (x86)\Microsoft\Edge\Application\142.0.3595.90\elevation_service.exe
+- machine h4: service WdNisSvc-1 executed by NT Authority@h4 executes file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
+- machine h4: Local System@h4 has rights FullControl on file at C:\ProgramData\Microsoft\Windows Defender\platform\4.18.25100.9008-0\NisSrv.exe
+- machine h0, GPO SeDenyInteractiveLogonRight is undefined
+- machine h0, GPO SeInteractiveLogonRight is undefined
+- u04 and h0 in same ad domain
 - Administrateur and dc0 in same ad domain
-- machine dc0, GPO SeDenyInteractiveLogonRight is undefined
 - machine dc0, GPO SeInteractiveLogonRight is undefined
-- machine h5, GPO SeDenyInteractiveLogonRight is undefined
-- Administrateur and h5 in same ad domain
-- machine h5, GPO SeInteractiveLogonRight is undefined
-- Local System local user of h5
-- machine h5, GPO SeDenyInteractiveLogonRight is undefined
-- machine h5, GPO SeInteractiveLogonRight is undefined
-- NT Authority local user of h5
-- machine h5, GPO SeDenyInteractiveLogonRight is undefined
-- machine h5, GPO SeInteractiveLogonRight is undefined
+- machine dc0, GPO SeDenyInteractiveLogonRight is undefined
+- machine h4, GPO SeInteractiveLogonRight is undefined
+- Administrateur and h4 in same ad domain
+- machine h4, GPO SeDenyInteractiveLogonRight does not apply on Administrateur@lab.local
+- Local System local user of h4
+- machine h4, GPO SeDenyInteractiveLogonRight does not apply on Local System@h4
+- machine h4, GPO SeInteractiveLogonRight is undefined
+- machine h4, GPO SeDenyInteractiveLogonRight does not apply on NT Authority@h4
+- NT Authority local user of h4
+- machine h4, GPO SeInteractiveLogonRight is undefined
+INFO:root:computers in path: {'h0', 'dc0', 'h4'}
 ```
 
-You can also search all path between 2 vertices
+You can also search all paths between 2 vertices
 ```bash
-python -m attack_graph l --graph-path MyGraph human h0 u0 h2 "Local System"
+python -m attack_graph --graph-path data/graph/ISLAB l human h0 u0 h2 "Local System" 
 ```
 
 ### 5 Visualize graph in GUI using Gephi
 
 - **Option A** In bellow commands, argument `--graph-path` takes `data/graph/ISLAB` 
-- **Option B** In bellow commands, argument `--graph-path` takes the same value as the one used in step 3 (`data/graph/myGraph` in the example) 
+- **Option B** In bellow commands, argument `--graph-path` takes the same value as the one used in step 3 (`MyGraph` in the example) 
 
 ```bash
-python -m attack_graph l --graph-path MyGraph gui
+python -m attack_graph --graph-path data/graph/ISLAB l gui
 ```
 
-Output `gephi graph saved in myGraph.gexf`, then open the generated file with gephi
+Output `gephi graph saved in ISLAB.gexf`, then open the generated file with gephi
+
+An example gephi graph file is ready-to-use in [data/graph/ISLAB.gexf](.data/graph/ISLAB.gexf)
 
 ----
 
