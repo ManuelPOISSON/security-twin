@@ -60,6 +60,8 @@ def parse_args():
         help="Path to graph file: for load mode (l), path to existing file; for build mode (b), path where to save (e.g., 'data/graph/other_g') (required when mode is 'l')",
         default=None,
     )
+    parser.add_argument('-lp', '--last-path',
+                        action='store_true')
     args = parser.parse_args()
 
     if args.analysis is None and args.src_dst_nodes:
@@ -183,6 +185,8 @@ def analysis_human(graph: Graph, args: argparse.Namespace):
         return
     if len(paths_with_cond) == 1:
         path_to_dump = 0
+    elif args.last_path:
+        path_to_dump = len(paths_with_cond) - 1
     else:
         try:
             path_to_dump = int(input(f"choose which path to reproduce (0 - {len(paths_with_cond) - 1}): "))

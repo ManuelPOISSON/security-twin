@@ -25,10 +25,9 @@ tmp_out=/tmp/pipeline_out.txt
 source "$venv_path/bin/activate"
 
 # 1 fill db
-python -m model.fill_db reset "$root_path/data/lab_surprise.py"
+python3 -m connector --directory data/sample_lab
 # 2 generate attack graph
-python -m attack_graph --hosts-file "$hosts_file" b human c0 u0 c2 SYSTEM
-
+python -m attack_graph --hosts-file "$hosts_file" b human h0 u0 h3 ugSci -lp
 
 # 3 deploy VMs
 read -p "Press Enter to deploy VMs..."
