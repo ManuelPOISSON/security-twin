@@ -55,7 +55,7 @@ To see more details see [Readme](collector_agent/README.md).
 To populate the database with the collected data, run the following command:
 
 ```bash
-python3 -m connector --directory sample_lab
+python3 -m connector --directory data/sample_lab
 ```
 
 If the operation is successful, you should see an output similar to:
